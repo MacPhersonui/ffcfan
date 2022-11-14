@@ -430,7 +430,7 @@ const Home = () => {
                       >
                         <SwiperSlide className={styles.player + ' player'}>
                           <Image
-                            src="/home/player_1.png"
+                            src="https://www.ffcfan.com/home/player_1.png"
                             alt="Landscape picture"
                             width={430}
                             height={600}
