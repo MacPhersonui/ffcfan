@@ -293,6 +293,7 @@ const Home = () => {
                               playsInline={true}
                               loop={true}
                               muted={true}
+                              preload="none"
                               poster="/home/cover.jpg"
                             />
                           </SwiperSlide>
