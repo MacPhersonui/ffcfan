@@ -426,15 +426,19 @@ const Home = () => {
                           delay: 5000,
                           disableOnInteraction: false
                         }}
+                        cardsEffect = {
+                          {
+                            slideShadows: false
+                          }
+                        }
                         modules={[EffectCards, Autoplay, Navigation]}
                       >
                         <SwiperSlide className={styles.player + ' player'}>
                           <Image
-                            src="https://www.ffcfan.com/home/player_1.png"
+                            src="/home/player_2.png"
                             alt="Landscape picture"
                             width={430}
                             height={600}
-                            decoding = "sync"
                             className={styles.play_img}
                           />
                           <div className={styles.player_info}>
@@ -453,7 +457,6 @@ const Home = () => {
                             alt="Landscape picture"
                             width={430}
                             height={600}
-                            decoding = "sync"
                             className={styles.play_img}
                           />
                           <div className={styles.player_info}>
@@ -469,7 +472,6 @@ const Home = () => {
                             alt="Landscape picture"
                             width={430}
                             height={600}
-                            decoding = "sync"
                             className={styles.play_img}
                           />
                           <div className={styles.player_info}>
@@ -486,7 +488,6 @@ const Home = () => {
                             alt="Landscape picture"
                             width={430}
                             height={600}
-                            decoding = "sync"
                             className={styles.play_img}
                           />
                           <div className={styles.player_info}>
@@ -502,7 +503,6 @@ const Home = () => {
                             alt="Landscape picture"
                             width={430}
                             height={600}
-                            decoding = "sync"
                             className={styles.play_img}
                           />
                           <div className={styles.player_info}>
