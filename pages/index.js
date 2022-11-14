@@ -434,6 +434,7 @@ const Home = () => {
                             alt="Landscape picture"
                             width={430}
                             height={600}
+                            decoding = "sync"
                             className={styles.play_img}
                           />
                           <div className={styles.player_info}>
@@ -452,6 +453,7 @@ const Home = () => {
                             alt="Landscape picture"
                             width={430}
                             height={600}
+                            decoding = "sync"
                             className={styles.play_img}
                           />
                           <div className={styles.player_info}>
@@ -467,6 +469,7 @@ const Home = () => {
                             alt="Landscape picture"
                             width={430}
                             height={600}
+                            decoding = "sync"
                             className={styles.play_img}
                           />
                           <div className={styles.player_info}>
@@ -483,6 +486,7 @@ const Home = () => {
                             alt="Landscape picture"
                             width={430}
                             height={600}
+                            decoding = "sync"
                             className={styles.play_img}
                           />
                           <div className={styles.player_info}>
@@ -498,6 +502,7 @@ const Home = () => {
                             alt="Landscape picture"
                             width={430}
                             height={600}
+                            decoding = "sync"
                             className={styles.play_img}
                           />
                           <div className={styles.player_info}>
