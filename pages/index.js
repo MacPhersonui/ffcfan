@@ -426,20 +426,19 @@ const Home = () => {
                           delay: 5000,
                           disableOnInteraction: false
                         }}
-                        cardsEffect = {
-                          {
-                            slideShadows: false
-                          }
-                        }
+                        cardsEffect={{
+                          slideShadows: false
+                        }}
                         modules={[EffectCards, Autoplay, Navigation]}
                       >
                         <SwiperSlide className={styles.player + ' player'}>
                           <Image
-                            src="/home/player_2.png"
+                            src="https://www.ffcfan.com/_next/image?url=%2Fhome%2Fplayer_1.png&w=640&q=75"
                             alt="Landscape picture"
                             width={430}
                             height={600}
                             className={styles.play_img}
+                            placeholder="blur"
                           />
                           <div className={styles.player_info}>
                             <h1>{t('lucas_hernández')}</h1>
@@ -453,11 +452,12 @@ const Home = () => {
                         </SwiperSlide>
                         <SwiperSlide className={styles.player + ' player'}>
                           <Image
-                            src="/home/player_2.png"
+                            src="https://www.ffcfan.com/_next/image?url=%2Fhome%2Fplayer_2.png&w=640&q=75"
                             alt="Landscape picture"
                             width={430}
                             height={600}
                             className={styles.play_img}
+                            placeholder="blur"
                           />
                           <div className={styles.player_info}>
                             <h1>{t('achraf_hakimi')}</h1>
@@ -468,11 +468,12 @@ const Home = () => {
                         </SwiperSlide>
                         <SwiperSlide className={styles.player + ' player'}>
                           <Image
-                            src="/home/player_3.png"
+                            src="https://www.ffcfan.com/_next/image?url=%2Fhome%2Fplayer_3.png&w=640&q=75"
                             alt="Landscape picture"
                             width={430}
                             height={600}
                             className={styles.play_img}
+                            placeholder="blur"
                           />
                           <div className={styles.player_info}>
                             <h1>{t('marco_verratti')}</h1>
@@ -484,11 +485,12 @@ const Home = () => {
                         </SwiperSlide>
                         <SwiperSlide className={styles.player + ' player'}>
                           <Image
-                            src="/home/player_4.png"
+                            src="https://www.ffcfan.com/_next/image?url=%2Fhome%2Fplayer_4.png&w=640&q=75"
                             alt="Landscape picture"
                             width={430}
                             height={600}
                             className={styles.play_img}
+                            placeholder="blur"
                           />
                           <div className={styles.player_info}>
                             <h1>{t('gianluigi_donnarumma')}</h1>
@@ -499,11 +501,12 @@ const Home = () => {
                         </SwiperSlide>
                         <SwiperSlide className={styles.player + ' player'}>
                           <Image
-                            src="/home/player_5.png"
+                            src="https://www.ffcfan.com/_next/image?url=%2Fhome%2Fplayer_5.png&w=640&q=75"
                             alt="Landscape picture"
                             width={430}
                             height={600}
                             className={styles.play_img}
+                            placeholder="blur"
                           />
                           <div className={styles.player_info}>
                             <h1>{t('brecht_dejaegere')}</h1>
