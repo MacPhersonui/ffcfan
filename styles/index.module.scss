@@ -1021,7 +1021,7 @@
                 .inner {
                     @for $i from 1 to 20 {
                         &:nth-child(#{$i}) {
-                            background: url(../public/imgs/team#{$i}.png) no-repeat center/100% auto;
+                            background: url(../public/imgs/team#{$i}.png) no-repeat left center/97% auto;
                         }
                     }
                 }

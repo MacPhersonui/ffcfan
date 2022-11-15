@@ -142,7 +142,10 @@ const Header = (props) => {
           </div>
         </div>
         <nav className={styles.navbar}>
-          <i className={styles.logo}></i>
+          <i className={styles.logo} onClick={() => {
+                setopenState(false)
+                window.fullpage_api.moveTo(1, 1000)
+              }}></i>
           <div
             className={cx(styles.open_menu, { open: openState })}
             onClick={() => {
