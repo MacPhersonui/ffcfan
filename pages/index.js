@@ -351,6 +351,7 @@ const Home = () => {
                           '--swiper-navigation-color': '#fff',
                           '--swiper-pagination-color': '#fff'
                         }}
+                        speed = {500}
                         loop={true}
                         spaceBetween={10}
                         thumbs={{ swiper: thumbsSwiper2 }}
