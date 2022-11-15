@@ -111,7 +111,7 @@ const Home = () => {
         document.getElementById("loading").classList.add("animate__animated", "animate__fadeOut", "animate__slower")
         setTimeout(() => {
             document.getElementById("loading").classList.add("none")
-        }, 2000)
+        }, 5000)
 
 
         return () => {
@@ -626,7 +626,9 @@ const Home = () => {
                       {t('our_partner')} {t('our_partner')} {t('our_partner')}{' '}
                       {t('our_partner')}{' '}
                     </i>
-                    <div className={styles.title}>
+                    <div className={cx(styles.title, {
+                        fr: router.locale === 'fr'
+                      })}>
                       <i></i>
                     </div>
                     <div className={styles.content}>

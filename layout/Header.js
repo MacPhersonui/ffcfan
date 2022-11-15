@@ -118,7 +118,7 @@ const Header = (props) => {
                 window.fullpage_api.moveTo(6, 1000)
               }}
             >
-              {t('nav_our_partner')}
+              {t('nav_qa')}
             </li>
           </ul>
           <div className={styles.locale}>
