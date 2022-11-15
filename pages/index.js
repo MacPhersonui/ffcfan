@@ -418,6 +418,10 @@ const Home = () => {
                     ></div>
                     <div className={styles.content}>
                       <Swiper
+                       style={{
+                            '--swiper-navigation-color': '#fff',
+                            '--swiper-pagination-color': '#fff'
+                          }}
                         effect={'cards'}
                         grabCursor
                         className="card"
@@ -582,6 +586,10 @@ const Home = () => {
                     ></div>
                     <div className={styles.content}>
                       <Swiper
+                       style={{
+                            '--swiper-navigation-color': '#fff',
+                            '--swiper-pagination-color': '#fff'
+                          }}
                         // loop={true}
                         slidesPerView={swapCount === 1 ? 1 : 5}
                         spaceBetween={10}
