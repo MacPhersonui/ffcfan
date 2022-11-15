@@ -1053,6 +1053,7 @@
             display: block;
             position: relative;
             margin-bottom: 0.5rem;
+            flex-shrink: 0;
 
             i {
                 background: url(../public/home/qa_subtitle.png) no-repeat center/auto 100%;
