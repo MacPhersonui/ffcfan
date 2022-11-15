@@ -434,7 +434,7 @@ const Home = () => {
                       >
                         <SwiperSlide className={styles.player + ' player'}>
                           <Image
-                            src="https://www.ffcfan.com/_next/image?url=%2Fhome%2Fplayer_1.png&w=640&q=75"
+                            src="https://www.ffcfan.com/home/player_1.png"
                             alt="Landscape picture"
                             width={430}
                             height={600}
@@ -453,7 +453,7 @@ const Home = () => {
                         </SwiperSlide>
                         <SwiperSlide className={styles.player + ' player'}>
                           <Image
-                            src="https://www.ffcfan.com/_next/image?url=%2Fhome%2Fplayer_2.png&w=640&q=75"
+                            src="https://www.ffcfan.com/home/player_2.png"
                             alt="Landscape picture"
                             width={430}
                             height={600}
@@ -469,7 +469,7 @@ const Home = () => {
                         </SwiperSlide>
                         <SwiperSlide className={styles.player + ' player'}>
                           <Image
-                            src="https://www.ffcfan.com/_next/image?url=%2Fhome%2Fplayer_3.png&w=640&q=75"
+                            src="https://www.ffcfan.com/home/player_3.png"
                             alt="Landscape picture"
                             width={430}
                             height={600}
@@ -486,7 +486,7 @@ const Home = () => {
                         </SwiperSlide>
                         <SwiperSlide className={styles.player + ' player'}>
                           <Image
-                            src="https://www.ffcfan.com/_next/image?url=%2Fhome%2Fplayer_4.png&w=640&q=75"
+                            src="https://www.ffcfan.com/home/player_4.png"
                             alt="Landscape picture"
                             width={430}
                             height={600}
@@ -502,7 +502,7 @@ const Home = () => {
                         </SwiperSlide>
                         <SwiperSlide className={styles.player + ' player'}>
                           <Image
-                            src="https://www.ffcfan.com/_next/image?url=%2Fhome%2Fplayer_5.png&w=640&q=75"
+                            src="https://www.ffcfan.com/home/player_5.png"
                             alt="Landscape picture"
                             width={430}
                             height={600}

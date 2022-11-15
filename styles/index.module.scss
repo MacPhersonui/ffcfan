@@ -201,8 +201,11 @@
             }
 
             .swiper_silde_thumbs {
-                position: relative;
-                cursor: pointer;
+               position: relative;
+               cursor: pointer;
+               display: flex;
+               flex-direction: column;
+               align-content: center;
                 &:nth-child(1){
                     span {
                         background-image: url(../public/home/icon_what_is_ffc.png);
@@ -241,8 +244,6 @@
                     font-size: 0.4rem;
                     white-space: nowrap;
                     display: block;
-                    position: absolute;
-                    top: 3rem;
                     opacity: 1;
                 }
             }
@@ -305,8 +306,8 @@
                     line-height: 0.8rem;
                     font-family: Nofex;
                     display: none;
-                    text-align: left;
-                    padding-left: 0.3rem;
+                    width: 6rem;
+                    text-align: center;
                 }
                 p {
                     color: #fff;
