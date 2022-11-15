@@ -439,15 +439,15 @@ const Home = () => {
                             width={430}
                             height={600}
                             className={styles.play_img}
-                            placeholder="blur"
+                            // placeholder="blur"
                           />
                           <div className={styles.player_info}>
                             <h1>{t('lucas_hernández')}</h1>
                             <div className={styles.intro_wrap}>
                               <p>{t('lucas_hernández_content1')}</p>
                               <p>{t('lucas_hernández_content2')}</p>
-                              <p>{t('lucas_hernández_content3')}</p>
-                              <p>{t('lucas_hernández_content4')}</p>
+                              {/* <p>{t('lucas_hernández_content3')}</p> */}
+                              {/* <p>{t('lucas_hernández_content4')}</p> */}
                             </div>
                           </div>
                         </SwiperSlide>
@@ -458,7 +458,7 @@ const Home = () => {
                             width={430}
                             height={600}
                             className={styles.play_img}
-                            placeholder="blur"
+                            // placeholder="blur"
                           />
                           <div className={styles.player_info}>
                             <h1>{t('achraf_hakimi')}</h1>
@@ -474,7 +474,7 @@ const Home = () => {
                             width={430}
                             height={600}
                             className={styles.play_img}
-                            placeholder="blur"
+                            // placeholder="blur"
                           />
                           <div className={styles.player_info}>
                             <h1>{t('marco_verratti')}</h1>
@@ -491,7 +491,7 @@ const Home = () => {
                             width={430}
                             height={600}
                             className={styles.play_img}
-                            placeholder="blur"
+                            // placeholder="blur"
                           />
                           <div className={styles.player_info}>
                             <h1>{t('gianluigi_donnarumma')}</h1>
@@ -507,7 +507,7 @@ const Home = () => {
                             width={430}
                             height={600}
                             className={styles.play_img}
-                            placeholder="blur"
+                            // placeholder="blur"
                           />
                           <div className={styles.player_info}>
                             <h1>{t('brecht_dejaegere')}</h1>
