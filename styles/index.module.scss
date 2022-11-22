@@ -548,8 +548,167 @@
         }
     }
 }
+.mint{
+  padding-top: 1.5rem;
+  width: 90vw;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  &::after{
+    content: "";
+    background: url(../public/home/mintbg.png);
+    width: 7.7rem;
+    height: 2.1rem;
+    background-size: 100% 100%;
+    right: -10vw;
+    position: absolute;
+    z-index: -1;
+    top: 1.8rem;
+  }
+  .tab_wrap{
+    width: 50%;
+  }
+  .prices{
+    padding-left: 1rem;
+    font-family: Helv;
+    width: 50%;
+    padding-top: 1rem;
+    position: relative;
+    .mint_video{
+      position: absolute;
+      right: 0;
+      width: 4.6rem;
+      height: 5rem;
+      z-index: 2;
+      top: -0.6rem;
+    }
+    .btns_wrap{
+      width: 4.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      position: relative;
+      z-index: 5;
+    }
+    .btn{
+      width: 2.88rem;
+      height: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: #091C3E;
+      margin-bottom: 0.2rem;
+      border-radius: 4px;
+      &.deadline{
+        width: 4.5rem;
+      }
+      .label{
+        color: #0C9158;
+        font-size: 0.23rem;
+        line-height: 0.1rem;
+      }
+      .val{
+        color: #fff;
+        display: flex;
+        align-items: baseline;
+        font-size: 0.6rem;
+        .unit{
+          font-size: 0.26rem;
+          margin-left: 0.2rem;
+        }
+      }
+    }
+    .unit_price{
+      font-size: 0.25rem;
+    }
+  }
+  .title{
+    background: url(../public/home/ffcpasscard.png) no-repeat;
+    width: 8.41rem;
+    height: 1rem;
+    background-size: 100% 100%;
+    &.fr{
+      background: url(../public/home/ffcpasscard.png) no-repeat;
+      background-size: 100% 100%;
+    }
+  }
+  .tab{
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.4rem;
+    margin: 0.2rem 0;
+    position: relative;
+    &::after{
+      content: '';
+      height: 2px;
+      background: #d8d8d8;
+      opacity: 0.25;
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      z-index: 1;
+    }
+    .tab_item{
+      position: relative;
+      height: 100%;
+      padding: 0.3rem 0.4rem;
+      margin-right: 0.4rem;
+      cursor: pointer;
+      &:last-child{
+        margin-right: 0;
+      }
+      &::after{
+        content: "";
+        height: 5px;
+        left: 0;
+        width: 100%;
+        bottom: -2px;
+        background: #fff;
+        border-radius: 4px;
+        position: absolute;
+      }
+      &.active{
+        &::after{
+          background: #D6FB01;
+        }
+      }
+    }
+  }
+  .tab_content{
+    font-size: 0.3rem;
+    line-height: 0.5rem;
+    padding: 0 0.2rem;
+    height: 4rem;
+    overflow-y: auto;
+    li{ 
+      list-style: disc;
+    }
+  }
+  .mint_wrap{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 4.5rem;
+    margin-top: 0.6rem;
+  }
+  .mint_btn{
+    background: url(../public/home/mintbtn.png);
+    width: 2rem;
+    height: 0.7rem;
+    background-size: 100% 100%;
+    margin-bottom: 0.2rem;
+    cursor: pointer;
+    &.fr{
+      background: url(../public/home/mintbtn.png);
+      background-size: 100% 100%;
+    }
+  }
+}
 
 @media screen and (max-width: 600px) {
+
   .container {
     .solgen {
         margin: 0 auto;
@@ -1106,6 +1265,86 @@
             }
         }
     }
+  }
+  .mint {
+    padding-top: 3rem;
+    flex-wrap: wrap;
+    &::after{
+      display: none;
+    }
+    .tab_wrap{
+      width: 100%;
+    }
+    .tab{
+      width: 100%;
+      .tab_item{
+        width: 33%;
+        text-align: center;
+        margin-right: 10%;
+        font-size: 0.8rem;
+        &::after{
+          height: 2px;
+        }
+      }
+      &::after{
+        height: 1px;
+        bottom: -1px;
+      }
+    }
+    .tab_content{
+      font-size: 0.6rem;
+      line-height: 0.8rem;
+      height: 24vh;
+      padding: 1rem;
+    }
+   .prices{
+    width: 100%;
+    padding-left: 0;
+    .btns_wrap{
+      flex-direction: row;
+      width: 100%;
+      justify-content: space-between;
+      .btn{
+        margin-right: 0.5rem;
+        width: auto;
+        padding: 0.3rem 0.5rem;
+        border-radius: 4px;
+        height: 3.6rem;
+        .label{
+          font-size: 0.7rem;
+          line-height: 1.2rem;
+          white-space: nowrap;
+        }
+        .val{
+          font-size: .8rem;
+          line-height: 1rem;
+          .unit{
+            font-size: 0.5rem;
+          }
+        }
+      }
+    }
+    .mint_video{
+      left: 50%;
+      transform: translateX(-50%);
+      top: 6rem;
+      width: 60%;
+      right:auto;
+      height: auto;
+    }
+    .mint_wrap{
+      width: 100%;
+      margin-top: 5rem;
+      .mint_btn{
+        margin-top: 3.2rem;
+        width: 4rem;
+        height: 1.4rem;
+      }
+      .unit_price{
+        font-size: 0.5rem;
+      }
+    }
+   }
   }
 }
 

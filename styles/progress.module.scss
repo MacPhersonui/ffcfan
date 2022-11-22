@@ -1,0 +1,56 @@
+.progress{
+  font-family: Helv;
+  font-size: 0.3rem;
+  color: #CCFD0A;
+  .progress_wrap{
+    display:flex;
+    align-items:center;
+    margin: 0.1rem 0;
+  }
+  .progress_box{
+    display: flex;
+    align-items:center;
+    margin-right: 0.2rem;
+    .item{
+      width: 0.3rem;
+      height: 0.5rem;
+      border: 1px solid #CCFD0A;
+      margin-right: 0.08rem;
+      border-radius: 4px;
+      position: relative;
+      .inner{
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        background: #D6FB01;
+        &.all{
+          width: 100%;
+        }
+        @for $i from 1 through 100{
+            &.w#{$i}{
+              width: #{$i * 1%};
+            }
+        }
+      }
+      
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .progress{
+    font-size: 0.6rem;
+    .progress_wrap{
+      margin:0.3rem 0;
+    }
+    .progress_box{
+      .item{
+        width: 0.6rem;
+        height: 1.1rem;
+        border-radius: 3px;
+        margin-right: 0.2rem;
+      }
+    }
+  }
+}

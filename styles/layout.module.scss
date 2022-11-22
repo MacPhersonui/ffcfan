@@ -12,6 +12,13 @@
     font-style: normal
 }
 
+@font-face {
+    font-family: "Helv";
+    src: url(../public/font/helvetica-light.otf) format("truetype");
+    font-weight: 400;
+    font-style: normal
+}
+
 .header {
     position: fixed;
     left: 0;

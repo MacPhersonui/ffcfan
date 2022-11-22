@@ -3,13 +3,14 @@ import Wallet from '../components/wallet'
 import Link from 'next/link'
 import classNames from "classnames/bind"
 import styles from "../styles/layout.module.scss"
-import {
+import Router, {
     useRouter
 } from 'next/router'
 import {
     useTranslation,
     Trans
 } from 'next-i18next'
+import { route } from "next/dist/server/router"
 
 const cx = classNames.bind(styles)
 
@@ -18,6 +19,7 @@ const Header = (props) => {
     const [openState, setopenState] = useState(false)
   
     const router = useRouter()
+    console.log(router);
     const {
         t
     } = useTranslation('common')
@@ -69,7 +71,11 @@ const Header = (props) => {
               data-menuanchor="home"
               onClick={() => {
                 setopenState(false)
-                window.fullpage_api.moveTo(1, 1000)
+                if (window.fullpage_api) {
+                  window.fullpage_api.moveTo(1, 1000)
+                } else {
+                  Router.push('/#home')
+                }
               }}
               className={styles.active}
             >
@@ -122,11 +128,11 @@ const Header = (props) => {
             </li>
           </ul>
           <div className={styles.locale}>
-            <Link href="/en" replace locale="en">
+            <Link href={router.route} replace locale="en">
               <span className={cx({ active: router.locale === 'en' })}>EN</span>
             </Link>
             /
-            <Link href="/fr" replace locale="fr">
+            <Link href={router.route} replace locale="fr">
               <span className={cx({ active: router.locale === 'fr' })}>FR</span>
             </Link>
           </div>
@@ -142,10 +148,13 @@ const Header = (props) => {
           </div>
         </div>
         <nav className={styles.navbar}>
-          <i className={styles.logo} onClick={() => {
-                setopenState(false)
-                window.fullpage_api.moveTo(1, 1000)
-              }}></i>
+          <i
+            className={styles.logo}
+            onClick={() => {
+              setopenState(false)
+              window.fullpage_api.moveTo(1, 1000)
+            }}
+          ></i>
           <div
             className={cx(styles.open_menu, { open: openState })}
             onClick={() => {
@@ -162,7 +171,11 @@ const Header = (props) => {
               <li
                 data-menuanchor="home"
                 onClick={() => {
-                  window.fullpage_api.moveTo(1, 1000)
+                   if (window.fullpage_api) {
+                     window.fullpage_api.moveTo(1, 1000)
+                   } else {
+                     Router.push('/#home')
+                   }
                 }}
                 className={styles.active}
               >
@@ -171,7 +184,11 @@ const Header = (props) => {
               <li
                 data-menuanchor="about_ffc"
                 onClick={() => {
-                  window.fullpage_api.moveTo(2, 1000)
+                  if (window.fullpage_api) {
+                    window.fullpage_api.moveTo(2, 1000)
+                  } else {
+                    Router.push('/#about_ffc')
+                  }
                 }}
               >
                 {t('nav_about_FFC')}
@@ -179,7 +196,11 @@ const Header = (props) => {
               <li
                 data-menuanchor="football_ambassador"
                 onClick={() => {
-                  window.fullpage_api.moveTo(3, 1000)
+                   if (window.fullpage_api) {
+                     window.fullpage_api.moveTo(3, 1000)
+                   } else {
+                     Router.push('/#football_ambassador')
+                   }
                 }}
               >
                 {t('nav_football_ambassador')}
@@ -187,7 +208,11 @@ const Header = (props) => {
               <li
                 data-menuanchor="roadmap"
                 onClick={() => {
-                  window.fullpage_api.moveTo(4, 1000)
+                 if (window.fullpage_api) {
+                   window.fullpage_api.moveTo(4, 1000)
+                 } else {
+                   Router.push('/#roadmap')
+                 }
                 }}
               >
                 {t('nav_road_map')}
@@ -195,7 +220,11 @@ const Header = (props) => {
               <li
                 data-menuanchor="our_partner"
                 onClick={() => {
-                  window.fullpage_api.moveTo(5, 1000)
+                  if (window.fullpage_api) {
+                    window.fullpage_api.moveTo(5, 1000)
+                  } else {
+                    Router.push('/#our_partner')
+                  }
                 }}
               >
                 {t('nav_our_partner')}
@@ -204,7 +233,11 @@ const Header = (props) => {
                 data-menuanchor="qa"
                 onClick={() => {
                   setopenState(false)
-                  window.fullpage_api.moveTo(6, 1000)
+                  if (window.fullpage_api) {
+                    window.fullpage_api.moveTo(6, 1000)
+                  } else {
+                    Router.push('/#our_partner')
+                  }
                 }}
               >
                 {t('nav_qa')}
@@ -212,12 +245,12 @@ const Header = (props) => {
             </ul>
             <dl className={styles.language}>
               <dt>
-                <Link href="/fr" replace locale="fr">
+                <Link href={router.route} replace locale="fr">
                   <span>French</span>
                 </Link>
               </dt>
               <dt>
-                <Link href="/en" replace locale="en">
+                <Link href={router.route} replace locale="en">
                   <span>English</span>
                 </Link>
               </dt>

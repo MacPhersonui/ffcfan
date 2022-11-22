@@ -118,5 +118,19 @@
   "q4_a13": "Discounted purchases or a chance to get other football merchandise, such as star-autographed jerseys, for free",
   "q4_a14": "Rights of drawing tickets for Ligue 1 matches and group photos of stars",
   "q5_q": "When is the GameFi board scheduled to go live and will new NFT character cards and in-game circulation tokens be issued based on the game? If game tokens are issued, will FFC Token be used as the game governance token?",
-  "q5_a": "According to our latest route planning and technical development progress, FFC GAME will go live in the fourth quarter of 2023. There will definitely be a new character NFT appearing within the game, and as to whether a new game token will be issued, we can't announce it yet, but it is certain that FFC will be the only governance token in it."
+  "q5_a": "According to our latest route planning and technical development progress, FFC GAME will go live in the fourth quarter of 2023. There will definitely be a new character NFT appearing within the game, and as to whether a new game token will be issued, we can't announce it yet, but it is certain that FFC will be the only governance token in it.",
+  "phase1": "PHASE Ⅰ",
+  "phase2": "PHASE Ⅱ",
+  "phase3": "PHASE Ⅲ",
+  "phase1_con1": "Airdrops for 20000 $FFC each FFC League Rights Card",
+  "phase1_con2": "100% getting a random airdrop for star card NFT issued based on Chiliz",
+  "phase1_con3": "Priority subscription to limited star, club NFT",
+  "phase1_con4": "Experience the closed beta of the FFC ecological football game and get airdrops for prop",
+  "phase1_con5": "Discounted purchases or a chance to get other football merchandise, such as star-autographed jerseys, for free",
+  "phase1_con6": "Rights of drawing tickets for LIGUE 1 matches and group photos of stars",
+  "passcard":"FFC PASSCARD",
+  "circulation": "CIRCULATION",
+  "deadline":"DEADLINE",
+  "mint": "mint",
+  "unit_price": "Unit Price"
 }
