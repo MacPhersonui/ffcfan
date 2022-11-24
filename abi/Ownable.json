@@ -20,7 +20,7 @@
   },
   {
     "inputs": [],
-    "name": "_owner",
+    "name": "owner",
     "outputs": [
       {
         "internalType": "address",
@@ -47,13 +47,6 @@
       }
     ],
     "name": "transferOwnership",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "whitdrawB",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"

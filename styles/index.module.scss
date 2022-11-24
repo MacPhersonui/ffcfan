@@ -20,6 +20,7 @@
     bottom: 0;
     background: url(../public/home/cover.jpg) no-repeat center/ 100% auto;
     z-index: 999;
+
     i {
         background: url(../public/home/logo.png) no-repeat center/ 100%;
         width: 1.4rem;
@@ -37,6 +38,7 @@
         display: flex;
         position: relative;
         padding: 0 2rem;
+
         i {
             font-family: fifa;
             -webkit-text-stroke: 1px white;
@@ -144,7 +146,8 @@
                     border: 2px solid #CCFD0A;
                     border-radius: 3px;
                     overflow: hidden;
-                    video{
+
+                    video {
                         object-fit: fill;
                         width: 100%;
                         height: 100%;
@@ -163,10 +166,12 @@
 
     .what_is_ffc {
         position: relative;
-        >div{
-          display: flex;
-          flex-direction: column;
+
+        >div {
+            display: flex;
+            flex-direction: column;
         }
+
         i.flag {
             font-family: fifa;
             -webkit-text-stroke: 1px white;
@@ -182,17 +187,21 @@
             animation: 100s wordsLoop linear infinite;
             z-index: -1;
         }
+
         .title {
             background: url(../public/home/what_is_ffc_title.png) no-repeat left center/auto 100%;
             height: 1rem;
             margin: 0 1rem;
-            &.fr{
-              background: url(../public/home/what_is_ffc_title_fr.png) no-repeat left center/auto 100%;
+
+            &.fr {
+                background: url(../public/home/what_is_ffc_title_fr.png) no-repeat left center/auto 100%;
             }
         }
+
         .content {
             flex-grow: 1;
             padding: 0 1rem;
+
             .swiper_silde {
                 text-align: left;
                 font-size: 0.35rem;
@@ -201,31 +210,36 @@
             }
 
             .swiper_silde_thumbs {
-               position: relative;
-               cursor: pointer;
-               display: flex;
-               flex-direction: column;
-               align-content: center;
-                &:nth-child(1){
+                position: relative;
+                cursor: pointer;
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+
+                &:nth-child(1) {
                     span {
                         background-image: url(../public/home/icon_what_is_ffc.png);
                     }
                 }
+
                 &:nth-child(2) {
                     span {
                         background-image: url(../public/home/icon_ffc_token.png);
                     }
                 }
+
                 &:nth-child(3) {
                     span {
                         background-image: url(../public/home/icon_ffc_nft.png);
                     }
                 }
+
                 &:nth-child(4) {
                     span {
                         background-image: url(../public/home/icon_ffc_game.png);
                     }
                 }
+
                 span {
                     background: url(../public/home/icon_what_is_ffc.png) no-repeat center/100% auto;
                     width: 100%;
@@ -250,11 +264,12 @@
         }
     }
 
-    .football_ambassador{
-      >div{
-          display: flex;
-          flex-direction: column;
+    .football_ambassador {
+        >div {
+            display: flex;
+            flex-direction: column;
         }
+
         i.flag {
             font-family: fifa;
             -webkit-text-stroke: 1px white;
@@ -270,33 +285,40 @@
             animation: 100s wordsLoop linear infinite;
             z-index: -1;
         }
+
         .title {
-          background: url(../public/home/football_ambassador.png) no-repeat left center/auto 100%;
-          height: 1rem;
-        margin: 0 1rem 0.2rem 1rem;
-          &.fr{
-            background: url(../public/home/football_ambassador_fr.png) no-repeat left center/auto 100%;
-          }
+            background: url(../public/home/football_ambassador.png) no-repeat left center/auto 100%;
+            height: 1rem;
+            margin: 0 1rem 0.2rem 1rem;
+
+            &.fr {
+                background: url(../public/home/football_ambassador_fr.png) no-repeat left center/auto 100%;
+            }
         }
-        .content{
+
+        .content {
             flex-grow: 1;
-            .player{
+
+            .player {
                 height: 7.5rem;
                 position: relative;
                 justify-content: flex-start;
                 padding-left: 1.5rem;
+
                 .player_info {
-                  position: absolute;
-                  left: 8.4rem;
-                  right: 1rem;
-                  top: 0.3rem;
+                    position: absolute;
+                    left: 8.4rem;
+                    right: 1rem;
+                    top: 0.3rem;
                 }
-                .intro_wrap{
-                  background: #050e2b6e;
-                  border-radius: 0.1rem;
-                  max-height: 6rem;
-                  overflow-y: auto;
+
+                .intro_wrap {
+                    background: #050e2b6e;
+                    border-radius: 0.1rem;
+                    max-height: 6rem;
+                    overflow-y: auto;
                 }
+
                 h1 {
                     color: #CCFD0A;
                     background: url(../public/home/ambassador_title.png) no-repeat left/auto 100%;
@@ -309,13 +331,14 @@
                     width: 6rem;
                     text-align: center;
                 }
+
                 p {
                     color: #fff;
                     font-size: 0.35rem;
                     padding: 0.1rem 0.2rem;
                     text-align: left;
                     line-height: 0.5rem;
-                    display:none;
+                    display: none;
                 }
             }
         }
@@ -325,10 +348,12 @@
         margin: 0 auto;
         padding-bottom: 0;
         position: relative;
-        >div{
-          display: flex;
-          flex-direction:column;
+
+        >div {
+            display: flex;
+            flex-direction: column;
         }
+
         i.flag {
             font-family: fifa;
             -webkit-text-stroke: 1px white;
@@ -344,18 +369,22 @@
             animation: 100s wordsLoop linear infinite;
             z-index: -1;
         }
+
         .title {
             background: url(../public/home/roadmap.png) no-repeat left center/auto 100%;
             height: 1rem;
             margin: 0 1rem;
-            &.fr{
-              background: url(../public/home/roadmap_fr.png) no-repeat left center/auto 100%;
+
+            &.fr {
+                background: url(../public/home/roadmap_fr.png) no-repeat left center/auto 100%;
             }
         }
+
         .content {
             overflow-x: auto;
             flex-grow: 1;
             position: relative;
+
             ul {
                 background: url(../public/home/roadmap_line.png) no-repeat left center/auto;
                 background-size: 100% auto;
@@ -364,9 +393,11 @@
                 width: 33.5rem;
                 margin: 0 0.6rem;
                 top: 20%;
+
                 li {
                     position: absolute;
                     left: 100rem;
+
                     h1 {
                         color: #CCFD0A;
                         font-size: 0.5rem;
@@ -429,10 +460,12 @@
 
     .partner {
         position: relative;
-        >div{
-          display: flex;
-          flex-direction:column;
+
+        >div {
+            display: flex;
+            flex-direction: column;
         }
+
         i.flag {
             font-family: fifa;
             -webkit-text-stroke: 1px white;
@@ -448,36 +481,41 @@
             animation: 100s wordsLoop linear infinite;
             z-index: -1;
         }
+
         .title {
             background: url(../public/home/our_partner.png) no-repeat left center/auto 100%;
             height: 1rem;
             margin: 0 1rem;
-            &.fr{
-              background: url(../public/home/our_partner_fr.png) no-repeat left center/auto 100%;
+
+            &.fr {
+                background: url(../public/home/our_partner_fr.png) no-repeat left center/auto 100%;
             }
         }
 
         .content {
-          flex-grow: 1;
-          padding: 0 0.5rem;
+            flex-grow: 1;
+            padding: 0 0.5rem;
+
             .outer {
-              .inner {
-                  @for $i from 1 to 20 {
-                      &:nth-child(#{$i}) {
-                          background: url(../public/imgs/team#{$i}.png) no-repeat center/100% auto;
-                      }
-                  }
-              }
+                .inner {
+                    @for $i from 1 to 20 {
+                        &:nth-child(#{$i}) {
+                            background: url(../public/imgs/team#{$i}.png) no-repeat center/100% auto;
+                        }
+                    }
+                }
             }
         }
     }
 
-    .qa{
+    .qa {
         position: relative;
-        >div{
-          display: flex;
-          flex-direction: column;
+
+        >div {
+            display: flex;
+            flex-direction: column;
         }
+
         i.flag {
             font-family: fifa;
             -webkit-text-stroke: 1px white;
@@ -498,24 +536,29 @@
             background: url(../public/home/qa_title.png) no-repeat left center/auto 100%;
             height: 1rem;
             margin: 0 1rem;
+
             &.fr {
-              background: url(../public/home/qa_title_fr.png) no-repeat left center/auto 100%;
+                background: url(../public/home/qa_title_fr.png) no-repeat left center/auto 100%;
             }
         }
-        .content{
-          flex-grow: 1;
-          display: flex;
-          align-items: center;
-          padding: 0 1rem;
-            ul{
-                li{
+
+        .content {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            padding: 0 1rem;
+
+            ul {
+                li {
                     position: relative;
-                    &.active{
-                        p{
+
+                    &.active {
+                        p {
                             display: block;
                         }
                     }
-                    i{
+
+                    i {
                         font-style: normal;
                         background: #0A1C3E;
                         border-radius: 5px;
@@ -528,16 +571,18 @@
                         left: 0.1rem;
                         top: 0.25rem;
                     }
-                    h1{
+
+                    h1 {
                         font-size: 0.3rem;
-                        border-bottom: 1px solid rgba(255,255,255,0.1);
+                        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
                         padding: 0.3rem 0;
                         margin-bottom: 0.2rem;
                         padding-left: 0.9rem;
                         cursor: pointer;
                         line-height: 0.35rem;
                     }
-                    p{
+
+                    p {
                         font-size: 0.2rem;
                         color: #CCFD0A;
                         display: none;
@@ -548,804 +593,932 @@
         }
     }
 }
-.mint{
-  padding-top: 1.5rem;
-  width: 90vw;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-  &::after{
-    content: "";
-    background: url(../public/home/mintbg.png);
-    width: 7.7rem;
-    height: 2.1rem;
-    background-size: 100% 100%;
-    right: -10vw;
-    position: absolute;
-    z-index: -1;
-    top: 1.8rem;
-  }
-  .tab_wrap{
-    width: 50%;
-  }
-  .prices{
-    padding-left: 1rem;
-    font-family: Helv;
-    width: 50%;
-    padding-top: 1rem;
-    position: relative;
-    .mint_video{
-      position: absolute;
-      right: 0;
-      width: 4.6rem;
-      height: 5rem;
-      z-index: 2;
-      top: -0.6rem;
-    }
-    .btns_wrap{
-      width: 4.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      position: relative;
-      z-index: 5;
-    }
-    .btn{
-      width: 2.88rem;
-      height: 1.2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background: #091C3E;
-      margin-bottom: 0.2rem;
-      border-radius: 4px;
-      &.deadline{
-        width: 4.5rem;
-      }
-      .label{
-        color: #0C9158;
-        font-size: 0.23rem;
-        line-height: 0.1rem;
-      }
-      .val{
-        color: #fff;
-        display: flex;
-        align-items: baseline;
-        font-size: 0.6rem;
-        .unit{
-          font-size: 0.26rem;
-          margin-left: 0.2rem;
-        }
-      }
-    }
-    .unit_price{
-      font-size: 0.25rem;
-    }
-  }
-  .title{
-    background: url(../public/home/ffcpasscard.png) no-repeat;
-    width: 8.41rem;
-    height: 1rem;
-    background-size: 100% 100%;
-    &.fr{
-      background: url(../public/home/ffcpasscard.png) no-repeat;
-      background-size: 100% 100%;
-    }
-  }
-  .tab{
-    display: inline-flex;
-    align-items: center;
-    font-size: 0.4rem;
-    margin: 0.2rem 0;
-    position: relative;
-    &::after{
-      content: '';
-      height: 2px;
-      background: #d8d8d8;
-      opacity: 0.25;
-      position: absolute;
-      width: 100%;
-      bottom: 0;
-      z-index: 1;
-    }
-    .tab_item{
-      position: relative;
-      height: 100%;
-      padding: 0.3rem 0.4rem;
-      margin-right: 0.4rem;
-      cursor: pointer;
-      &:last-child{
-        margin-right: 0;
-      }
-      &::after{
-        content: "";
-        height: 5px;
-        left: 0;
-        width: 100%;
-        bottom: -2px;
-        background: #fff;
-        border-radius: 4px;
-        position: absolute;
-      }
-      &.active{
-        &::after{
-          background: #D6FB01;
-        }
-      }
-    }
-  }
-  .tab_content{
-    font-size: 0.3rem;
-    line-height: 0.5rem;
-    padding: 0 0.2rem;
-    height: 4rem;
-    overflow-y: auto;
-    li{ 
-      list-style: disc;
-    }
-  }
-  .mint_wrap{
+
+.mint {
+    padding-top: 1.5rem;
+    width: 90vw;
+    margin: 0 auto;
     display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 4.5rem;
-    margin-top: 0.6rem;
-  }
-  .mint_btn{
-    background: url(../public/home/mintbtn.png);
-    width: 2rem;
-    height: 0.7rem;
-    background-size: 100% 100%;
-    margin-bottom: 0.2rem;
-    cursor: pointer;
-    &.fr{
-      background: url(../public/home/mintbtn.png);
-      background-size: 100% 100%;
+    justify-content: space-between;
+    position: relative;
+
+    &::after {
+        content: "";
+        background: url(../public/home/mintbg.png);
+        width: 7.7rem;
+        height: 2.1rem;
+        background-size: 100% 100%;
+        right: -10vw;
+        position: absolute;
+        z-index: -1;
+        top: 1.8rem;
     }
-  }
+
+    .tab_wrap {
+        width: 50%;
+    }
+
+    .prices {
+        padding-left: 1rem;
+        font-family: Helv;
+        width: 50%;
+        padding-top: 0.4rem;
+        position: relative;
+
+        .mint_video {
+            position: absolute;
+            right: 0;
+            width: 4rem;
+            height: 5rem;
+            z-index: 2;
+            top: 0.4rem;
+        }
+
+        .btns_wrap {
+            width: 4.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            position: relative;
+            z-index: 5;
+        }
+
+        .btn {
+            width: 2.6rem;
+            height: 1.1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #091C3E;
+            margin-bottom: 0.2rem;
+            border-radius: 4px;
+
+            &.deadline {
+                width: 3.8rem;
+            }
+
+            .label {
+                color: #0C9158;
+                font-size: 0.23rem;
+                line-height: 0.1rem;
+            }
+
+            .val {
+                color: #fff;
+                display: flex;
+                align-items: baseline;
+                font-size: 0.45rem;
+                .unit {
+                    font-size: 0.26rem;
+                    margin-left: 0.2rem;
+                }
+            }
+        }
+
+        .unit_price {
+            font-size: 0.25rem;
+        }
+    }
+
+    .title {
+        background: url(../public/home/minttitle.png) no-repeat;
+        width: 5.01rem;
+        height: 1rem;
+        background-size: 100% 100%;
+
+        &.fr {
+            background: url(../public/home/minttitle.png) no-repeat;
+            background-size: 100% 100%;
+        }
+    }
+
+    .tab {
+        display: inline-flex;
+        align-items: center;
+        font-size: 0.3rem;
+        margin: 0.2rem 0;
+        position: relative;
+        white-space: nowrap;
+        &::after {
+            content: '';
+            height: 2px;
+            background: #d8d8d8;
+            opacity: 0.25;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        .tab_item {
+            position: relative;
+            height: 100%;
+            padding: 0.3rem 0.4rem;
+            margin-right: 0.4rem;
+            cursor: pointer;
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            &::after {
+                content: "";
+                height: 5px;
+                left: 0;
+                width: 100%;
+                bottom: -2px;
+                background: #fff;
+                border-radius: 4px;
+                position: absolute;
+            }
+
+            &.active {
+                &::after {
+                    background: #D6FB01;
+                }
+            }
+        }
+    }
+
+    .tab_content {
+        font-size: 0.3rem;
+        line-height: 0.5rem;
+        padding: 0 0.2rem;
+        height: 4rem;
+        overflow-y: auto;
+
+        li {
+            list-style: disc;
+        }
+    }
+
+    .mint_wrap {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        width: 7.3rem;
+        margin-top: 0.2rem;
+        background: #091C3E;
+        padding: 0.3rem;
+        border-radius: 0.2rem;
+    }
+
+    .mint_input {
+        background: url(../public/home/mint_input.png) no-repeat center/auto 100%;
+        border: none;
+        width: 4.3rem;
+        height: 0.6rem;
+        background-color: transparent;
+        float: left;
+        font-size: 0.4rem;
+        color: #091c3e;
+        text-align: center;
+    }
+
+    .mint_btn {
+        background: url(../public/home/mintbtn.png) no-repeat;
+        width: 2.02rem;
+        height: 0.6rem;
+        background-size: auto 100%;
+        margin-bottom: 0.2rem;
+        cursor: pointer;
+        float: left;
+        margin-left: -0.6rem;
+
+        &.fr {
+            background: url(../public/home/mintbtn_fr.png);
+            background-size: 100% 100%;
+        }
+    }
+
+    .freemint {
+        display: flex;
+        background: #091C3E;
+        border-radius: 0.2rem;
+        width: 7.3rem;
+        margin-top: 0.2rem;
+        padding: 0.3rem;
+        span {
+            font-size: 0.25rem;
+            vertical-align: middle;
+            line-height: 0.5rem;
+        }
+
+        .freemint_btn {
+            background: url(../public/home/free_mint.png) no-repeat center/auto 100%;
+            height: 0.6rem;
+            width: 4rem;
+            border: none;
+            cursor: pointer;
+            vertical-align: middle;
+        }
+    }
 }
 
 @media screen and (max-width: 600px) {
 
-  .container {
-    .solgen {
-        margin: 0 auto;
-        display: flex;
-        position: relative;
-        i {
-            font-family: fifa;
-            -webkit-text-stroke: 1px white;
-            color: transparent;
-            font-style: normal;
-            position: absolute;
-            white-space: nowrap;
-            top: 5.5rem;
-            left: 0;
-            font-size: 1.5rem;
-            opacity: 0.4;
-            width: max-content;
-            animation: 100s wordsLoop linear infinite
-        }
-
-        >div {
+    .container {
+        .solgen {
+            margin: 0 auto;
             display: flex;
-            flex-direction: column;
-            height: 100%;
-            align-items: center;
-            justify-content: flex-start;
-            overflow: inherit;
-        }
+            position: relative;
 
-        .solgen_content {
-            float: left;
-            width: 80vw;
-            .text {
-                height: auto;
-                .solgen_logo {
-                    float: none;
-                    margin: auto;
-                    background: url(../public/home/solgen_logo.png) no-repeat center/100% auto;
-                    height: 8rem;
-                    width: 6.4rem;
+            i {
+                font-family: fifa;
+                -webkit-text-stroke: 1px white;
+                color: transparent;
+                font-style: normal;
+                position: absolute;
+                white-space: nowrap;
+                top: 5.5rem;
+                left: 0;
+                font-size: 1.5rem;
+                opacity: 0.4;
+                width: max-content;
+                animation: 100s wordsLoop linear infinite
+            }
+
+            >div {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+                align-items: center;
+                justify-content: flex-start;
+                overflow: inherit;
+            }
+
+            .solgen_content {
+                float: left;
+                width: 80vw;
+
+                .text {
+                    height: auto;
+
+                    .solgen_logo {
+                        float: none;
+                        margin: auto;
+                        background: url(../public/home/solgen_logo.png) no-repeat center/100% auto;
+                        height: 8rem;
+                        width: 6.4rem;
+                    }
+
+                    h1 {
+                        color: #CCFD0A;
+                        font-size: 1.2rem;
+                        padding-left: 0;
+                        display: block;
+                        align-items: center;
+                        justify-content: center;
+                        text-align: center;
+                    }
+
+                    h2 {
+                        font-size: 1rem;
+                        margin-top: 0.4rem;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding-left: 0;
+                        text-align: center;
+                    }
                 }
 
-                h1 {
-                    color: #CCFD0A;
-                    font-size: 1.2rem;
-                    padding-left: 0;
-                    display: block;
-                    align-items: center;
-                    justify-content: center;
-                    text-align: center;
-                }
-
-                h2 {
-                    font-size: 1rem;
-                    margin-top: 0.4rem;
+                .team {
+                    width: 100%;
+                    height: 4rem;
                     display: flex;
-                    align-items: center;
+                    flex-direction: column;
                     justify-content: center;
-                    padding-left: 0;
-                    text-align: center;
+                    align-content: center;
+                    align-items: center;
+                    margin: 0.2rem 0;
+
+                    .team_swiper {
+                        height: 3rem;
+
+                        .team_list {
+                            height: 3rem;
+
+                            @for $i from 1 to 20 {
+                                &:nth-child(#{$i}) {
+                                    background: url(../public/home/team#{$i}.png) no-repeat center/auto;
+                                    background-size: 100% auto;
+                                }
+                            }
+                        }
+                    }
+
+                    button {
+                        border: 1px solid #CCFD0A;
+                        border-right: 4px solid #CCFD0A;
+                        color: #CCFD0A;
+                        background: none;
+                        padding: 0.1rem 0.8rem;
+                        font-family: fifa;
+                        font-size: 0.8rem;
+                        height: 1.8rem;
+                        white-space: nowrap;
+                        margin: 1rem;
+                        cursor: pointer;
+                        transition: 0.5s;
+
+                        &:hover {
+                            background: #CCFD0A;
+                            color: #081d27;
+                        }
+                    }
                 }
             }
 
-            .team {
-                width: 100%;
-                height: 4rem;
+            .video {
+                width: 80vw;
+                height: 10rem;
+                float: right;
+
+                .video_warpper {
+                    .swiper_silde {
+                        height: 10rem;
+                        border: 2px solid #CCFD0A;
+                        border-radius: 3px;
+                        overflow: hidden;
+
+                        video {
+                            object-fit: fill;
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                }
+
+                .swiper_silde_thumbs {
+                    height: 0.9rem;
+                    border: 2px solid #CCFD0A;
+                    border-radius: 3px;
+                    overflow: hidden;
+                }
+            }
+        }
+
+        .what_is_ffc {
+            position: relative;
+
+            i.flag {
+                font-family: fifa;
+                -webkit-text-stroke: 1px white;
+                color: transparent;
+                font-style: normal;
+                position: absolute;
+                white-space: nowrap;
+                top: 7.2rem;
+                left: 0;
+                font-size: 1rem;
+                opacity: 0.4;
+                width: max-content;
+                animation: 100s wordsLoop linear infinite;
+                z-index: -1;
+            }
+
+            .title {
+                background: url(../public/home/what_is_ffc_title.png) no-repeat left center/auto 100%;
+                height: 1.2rem;
+                display: block;
+                position: relative;
+                margin-bottom: 0.5rem;
+
+                i {
+                    background: url(../public/home/what_is_ffc_subtitle.png) no-repeat center/auto 100%;
+                    position: absolute;
+                    height: 0.6rem;
+                    width: 6.4rem;
+                    top: 0.3rem;
+                    left: 4.8rem;
+                }
+            }
+
+            .content {
+                .swiper_silde {
+                    text-align: left;
+                    font-size: 0.8rem;
+                    line-height: 1.7em;
+                    height: 60vh;
+                    overflow-y: auto;
+                }
+
+                .swiper_silde_thumbs {
+                    position: relative;
+                    height: 3.5rem;
+                    cursor: pointer;
+
+                    &:nth-child(1) {
+                        span {
+                            background-image: url(../public/home/icon_what_is_ffc.png);
+                        }
+                    }
+
+                    &:nth-child(2) {
+                        span {
+                            background-image: url(../public/home/icon_ffc_token.png);
+                        }
+                    }
+
+                    &:nth-child(3) {
+                        span {
+                            background-image: url(../public/home/icon_ffc_nft.png);
+                        }
+                    }
+
+                    &:nth-child(4) {
+                        span {
+                            background-image: url(../public/home/icon_ffc_game.png);
+                        }
+                    }
+
+                    span {
+                        background: url(../public/home/icon_what_is_ffc.png) no-repeat center/100% auto;
+                        width: 100%;
+                        height: 2.5rem;
+                    }
+
+                    img {
+                        height: 1.5rem !important;
+                        width: 100% !important;
+                    }
+
+                    i {
+                        color: #CCFD0A;
+                        font-family: Nofex;
+                        font-style: normal;
+                        font-size: 0.4rem;
+                        white-space: nowrap;
+                        display: block;
+                        position: absolute;
+                        top: 3rem;
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+
+        .football_ambassador {
+            position: relative;
+
+            i.flag {
+                font-family: fifa;
+                -webkit-text-stroke: 1px rgb(157, 155, 155);
+                color: transparent;
+                font-style: normal;
+                position: absolute;
+                white-space: nowrap;
+                top: 5rem;
+                left: 0;
+                font-size: 1rem;
+                opacity: 0.4;
+                width: max-content;
+                animation: 100s wordsLoop linear infinite;
+                z-index: -1;
+            }
+
+            .title {
+                background: url(../public/home/football_ambassador.png) no-repeat left center/auto 100%;
+                height: 1.2rem;
+                display: block;
+                position: relative;
+
+                i {
+                    background: url(../public/home/football_ambassador_subtitle.png) no-repeat center/auto 100%;
+                    position: absolute;
+                    height: 0.8rem;
+                    width: 11rem;
+                    top: 0.3rem;
+                    left: 0.8rem;
+                    opacity: 0.15;
+                }
+            }
+
+            .content {
+                margin: auto;
+                overflow: hidden;
+                width: 100vw;
+
+                >div {
+                    width: 14rem;
+                }
+
+                .player {
+                    height: auto;
+                    padding-left: 0;
+                    padding-top: 6rem;
+
+                    .player_info {
+                        position: absolute;
+                        left: 0.4rem;
+                        right: 0.4rem;
+                        top: 1rem;
+                    }
+
+                    .intro_wrap {
+                        background: #050e2b6e;
+                        border-radius: 0.1rem;
+                        max-height: 6rem;
+                        overflow-y: auto;
+                    }
+
+                    h1 {
+                        color: #CCFD0A;
+                        height: 1.2rem;
+                        z-index: 1;
+                        display: none;
+                        font-size: 0.4rem;
+                        color: #000;
+                        line-height: 1.2rem;
+                        padding: 0 0.4rem 0 0.3rem;
+                        font-family: Nofex;
+                        width: auto;
+                        right: 0;
+                        width: 3rem;
+                        background-size: 100% 100%;
+                    }
+
+                    p {
+                        color: #fff;
+                        margin-left: 0;
+                        font-size: 0.6rem;
+                        background: #050e2b6e;
+                        height: auto;
+                        display: none;
+                        white-space: normal;
+                        text-align: left;
+                        line-height: 1.2rem;
+                    }
+                }
+            }
+        }
+
+        .roadmap {
+            position: relative;
+
+            i.flag {
+                font-family: fifa;
+                -webkit-text-stroke: 1px white;
+                color: transparent;
+                font-style: normal;
+                position: absolute;
+                white-space: nowrap;
+                top: 4.4rem;
+                left: 0;
+                font-size: 1rem;
+                opacity: 0.4;
+                width: max-content;
+                animation: 100s wordsLoop linear infinite;
+                z-index: -1;
+            }
+
+            .title {
+                background: url(../public/home/roadmap.png) no-repeat left center/auto 100%;
+                height: 1.2rem;
+                display: block;
+                position: relative;
+                margin-bottom: 0.5rem;
+                margin: 0 2rem;
+
+                i {
+                    background: url(../public/home/roadmap_subtitle.png) no-repeat center/auto 100%;
+                    position: absolute;
+                    height: 0.8rem;
+                    width: 5rem;
+                    top: 0.3rem;
+                    left: 0.8rem;
+                    opacity: 0.15;
+                }
+            }
+
+            .content {
+                margin: 0;
+
+                ul {
+                    background: url(../public/home/roadmap_line1.png) no-repeat center center;
+                    height: 80vh;
+                    position: relative;
+                    background-size: auto 100%;
+                    top: 0;
+                    margin: 1rem 0;
+                    width: 100%;
+
+                    li {
+                        position: absolute;
+
+                        h1 {
+                            color: #CCFD0A;
+                            font-size: 0.8rem;
+                        }
+
+                        h2 {
+                            font-size: 0.5rem;
+                            line-height: 0.7rem;
+                        }
+
+                        &:nth-child(1) {
+                            left: 10.7rem;
+                            bottom: 28rem;
+                            ;
+                        }
+
+                        &:nth-child(2) {
+                            right: 10.7rem;
+                            left: auto;
+                            top: auto;
+                            bottom: 26rem;
+                            text-align: right;
+                            width: 6.6rem;
+                        }
+
+                        &:nth-child(3) {
+                            left: 10.7rem;
+                            bottom: 20rem;
+                            width: 7rem;
+                        }
+
+                        &:nth-child(4) {
+                            right: 10.7rem;
+                            left: auto;
+                            top: auto;
+                            bottom: 18rem;
+                            text-align: right;
+                            width: 6.6rem;
+                        }
+
+                        &:nth-child(5) {
+                            bottom: 12.5rem;
+                            left: 10.7rem;
+                            width: 6.8rem;
+                        }
+
+                        &:nth-child(6) {
+                            right: 10.7rem;
+                            left: auto;
+                            top: auto;
+                            bottom: 10.5rem;
+                            text-align: right;
+                            width: 8rem;
+                        }
+
+                        &:nth-child(7) {
+                            bottom: 6rem;
+                            left: 10.7rem;
+                            width: 7.2rem;
+                        }
+
+                        &:nth-child(8) {
+                            bottom: 4.2rem;
+                            right: 10.7rem;
+                            left: auto;
+                            top: auto;
+                            width: 7.8rem;
+                            text-align: right;
+                        }
+                    }
+                }
+            }
+        }
+
+        .partner {
+            margin: 0 auto;
+            position: relative;
+
+            i.flag {
+                font-family: fifa;
+                -webkit-text-stroke: 1px white;
+                color: transparent;
+                font-style: normal;
+                position: absolute;
+                white-space: nowrap;
+                top: 2.4rem;
+                left: 0;
+                font-size: 1rem;
+                opacity: 0.4;
+                width: max-content;
+                animation: 100s wordsLoop linear infinite;
+                z-index: -1;
+            }
+
+            .title {
+                background: url(../public/home/our_partner.png) no-repeat left center/auto 100%;
+                height: 1.2rem;
+                display: block;
+                position: relative;
+                margin-bottom: 0.5rem;
+
+                i {
+                    background: url(../public/home/our_partner_subtitle.png) no-repeat center/auto 100%;
+                    position: absolute;
+                    height: 0.8rem;
+                    width: 13rem;
+                    top: 0.3rem;
+                    left: 0.8rem;
+                    opacity: 0.15;
+                }
+            }
+
+            .content {
+                padding: 0 1.2rem;
                 display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-content: center;
-                align-items: center;
-                margin: 0.2rem 0;
-                .team_swiper {
-                    height: 3rem;
-                    .team_list {
-                        height: 3rem;
+
+                .outer {
+                    .inner {
                         @for $i from 1 to 20 {
                             &:nth-child(#{$i}) {
-                                background: url(../public/home/team#{$i}.png) no-repeat center/auto ;
-                                background-size: 100% auto;
+                                background: url(../public/imgs/team#{$i}.png) no-repeat left center/97% auto;
                             }
                         }
                     }
                 }
-
-                button {
-                    border: 1px solid #CCFD0A;
-                    border-right: 4px solid #CCFD0A;
-                    color: #CCFD0A;
-                    background: none;
-                    padding: 0.1rem 0.8rem;
-                    font-family: fifa;
-                    font-size: 0.8rem;
-                    height: 1.8rem;
-                    white-space: nowrap;
-                    margin: 1rem;
-                    cursor: pointer;
-                    transition: 0.5s;
-                    &:hover {
-                        background: #CCFD0A;
-                        color: #081d27;
-                    }
-                }
             }
         }
 
-        .video {
-            width: 80vw;
-            height: 10rem;
-            float: right;
-            .video_warpper {
-                .swiper_silde {
-                    height: 10rem;
-                    border: 2px solid #CCFD0A;
-                    border-radius: 3px;
-                    overflow: hidden;
-                    video{
-                        object-fit: fill;
-                        width: 100%;
-                        height: 100%;
-                    }
-                }
-            }
-
-            .swiper_silde_thumbs {
-                height: 0.9rem;
-                border: 2px solid #CCFD0A;
-                border-radius: 3px;
-                overflow: hidden;
-            }
-        }
-    }
-
-    .what_is_ffc {
-        position: relative;
-
-        i.flag {
-            font-family: fifa;
-            -webkit-text-stroke: 1px white;
-            color: transparent;
-            font-style: normal;
-            position: absolute;
-            white-space: nowrap;
-            top: 7.2rem;
-            left: 0;
-            font-size: 1rem;
-            opacity: 0.4;
-            width: max-content;
-            animation: 100s wordsLoop linear infinite;
-            z-index: -1;
-        }
-
-        .title {
-            background: url(../public/home/what_is_ffc_title.png) no-repeat left center/auto 100%;
-            height: 1.2rem;
-            display: block;
+        .qa {
             position: relative;
-            margin-bottom: 0.5rem;
-            i {
-                background: url(../public/home/what_is_ffc_subtitle.png) no-repeat center/auto 100%;
+
+            i.flag {
+                font-family: fifa;
+                -webkit-text-stroke: 1px white;
+                color: transparent;
+                font-style: normal;
                 position: absolute;
-                height: 0.6rem;
-                width: 6.4rem;
-                top: 0.3rem;
-                left: 4.8rem;
+                white-space: nowrap;
+                top: 5.4rem;
+                left: 0;
+                font-size: 1rem;
+                opacity: 0.4;
+                width: max-content;
+                animation: 100s wordsLoop linear infinite;
+                z-index: -1;
             }
-        }
 
-        .content {
-            .swiper_silde {
-                text-align: left;
-                font-size: 0.8rem;
-                line-height: 1.7em;
-                height: 60vh;
-                overflow-y: auto;
-            }
-            .swiper_silde_thumbs {
+            .title {
+                background: url(../public/home/qa_title.png) no-repeat left center/auto 100%;
+                height: 1.2rem;
+                display: block;
                 position: relative;
-                height: 3.5rem;
-                cursor: pointer;
-                &:nth-child(1){
-                    span {
-                        background-image: url(../public/home/icon_what_is_ffc.png);
-                    }
-                }
-                &:nth-child(2) {
-                    span {
-                        background-image: url(../public/home/icon_ffc_token.png);
-                    }
-                }
-                &:nth-child(3) {
-                    span {
-                        background-image: url(../public/home/icon_ffc_nft.png);
-                    }
-                }
-                &:nth-child(4) {
-                    span {
-                        background-image: url(../public/home/icon_ffc_game.png);
-                    }
-                }
-                span {
-                    background: url(../public/home/icon_what_is_ffc.png) no-repeat center/100% auto;
-                    width: 100%;
-                    height: 2.5rem;
-                }
-
-                img {
-                    height: 1.5rem !important;
-                    width: 100% !important;
-                }
+                margin-bottom: 0.5rem;
+                flex-shrink: 0;
 
                 i {
-                    color: #CCFD0A;
-                    font-family: Nofex;
-                    font-style: normal;
-                    font-size: 0.4rem;
-                    white-space: nowrap;
-                    display: block;
+                    background: url(../public/home/qa_subtitle.png) no-repeat center/auto 100%;
                     position: absolute;
-                    top: 3rem;
-                    opacity: 1;
+                    height: 0.8rem;
+                    width: 14rem;
+                    top: 0.3rem;
+                    left: 0.8rem;
+                    opacity: 0.15;
+                }
+            }
+
+            .content {
+                align-items: flex-start;
+
+                ul {
+                    li {
+                        position: relative;
+
+                        &.active {
+                            p {
+                                display: block;
+                            }
+                        }
+
+                        i {
+                            font-style: normal;
+                            background: #0A1C3E;
+                            border-radius: 5px;
+                            font-size: 0.8rem;
+                            width: 1.2rem;
+                            height: 1.2rem;
+                            position: absolute;
+                            text-align: center;
+                            line-height: 1.2rem;
+                            left: 0.1rem;
+                            top: 0.3rem;
+                        }
+
+                        h1 {
+                            font-size: 0.8rem;
+                            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                            padding: 0.3rem 0;
+                            margin-bottom: 0.2rem;
+                            padding-left: 1.5rem;
+                            line-height: 1rem;
+                        }
+
+                        p {
+                            font-size: 0.7rem;
+                            color: #CCFD0A;
+                            display: none;
+                            line-height: 1rem;
+                        }
+                    }
                 }
             }
         }
     }
 
-    .football_ambassador{
-        position: relative;
-        i.flag {
-            font-family: fifa;
-            -webkit-text-stroke: 1px rgb(157, 155, 155);
-            color: transparent;
-            font-style: normal;
-            position: absolute;
-            white-space: nowrap;
-            top: 5rem;
-            left: 0;
-            font-size: 1rem;
-            opacity: 0.4;
-            width: max-content;
-            animation: 100s wordsLoop linear infinite;
-            z-index: -1;
-        }
-        .title {
-            background: url(../public/home/football_ambassador.png) no-repeat left center/auto 100%;
-            height: 1.2rem;
-            display: block;
-            position: relative;
-            i {
-                background: url(../public/home/football_ambassador_subtitle.png) no-repeat center/auto 100%;
-                position: absolute;
-                height: 0.8rem;
-                width: 11rem;
-                top: 0.3rem;
-                left: 0.8rem;
-                opacity: 0.15;
-            }
-        }
-        .content {
-            margin: auto;
-            overflow: hidden;
-            width: 100vw;
-            >div{
-              width: 14rem;
-            }
-            .player{
-                height: auto;
-                padding-left: 0;
-                padding-top: 6rem;
-                .player_info {
-                  position: absolute;
-                  left: 0.4rem;
-                  right: 0.4rem;
-                  top: 1rem;
-                }
-                .intro_wrap{
-                  background: #050e2b6e;
-                  border-radius: 0.1rem;
-                  max-height: 6rem;
-                  overflow-y: auto;
-                }
-                h1 {
-                    color: #CCFD0A;
-                    height: 1.2rem;
-                    z-index: 1;
-                    display: none;
-                    font-size: 0.4rem;
-                    color: #000;
-                    line-height: 1.2rem;
-                    padding: 0 0.4rem 0 0.3rem;
-                    font-family: Nofex;
-                    width: auto;
-                    right: 0;
-                    width: 3rem;
-                    background-size: 100% 100%;
-                }
-                p {
-                    color: #fff;
-                    margin-left: 0;
-                    font-size: 0.6rem;
-                    background: #050e2b6e;
-                    height: auto;
-                    display: none;
-                    white-space: normal;
-                    text-align: left;
-                    line-height: 1.2rem;
-                }
-            }
-        }
-    }
+    .mint {
+        padding-top: 3rem;
+        flex-wrap: wrap;
 
-    .roadmap {
-        position: relative;
-        i.flag {
-            font-family: fifa;
-            -webkit-text-stroke: 1px white;
-            color: transparent;
-            font-style: normal;
-            position: absolute;
-            white-space: nowrap;
-            top: 4.4rem;
-            left: 0;
-            font-size: 1rem;
-            opacity: 0.4;
-            width: max-content;
-            animation: 100s wordsLoop linear infinite;
-            z-index: -1;
+        &::after {
+            display: none;
         }
-        .title {
-            background: url(../public/home/roadmap.png) no-repeat left center/auto 100%;
-            height: 1.2rem;
-            display: block;
-            position: relative;
-            margin-bottom: 0.5rem;
-            margin: 0 2rem;
-            i {
-                background: url(../public/home/roadmap_subtitle.png) no-repeat center/auto 100%;
-                position: absolute;
-                height: 0.8rem;
-                width: 5rem;
-                top: 0.3rem;
-                left: 0.8rem;
-                opacity: 0.15;
+
+        .tab_wrap {
+            width: 100%;
+        }
+
+        .tab {
+            width: 100%;
+
+            .tab_item {
+                width: 33%;
+                text-align: center;
+                margin-right: 10%;
+                font-size: 0.8rem;
+
+                &::after {
+                    height: 2px;
+                }
+            }
+
+            &::after {
+                height: 1px;
+                bottom: -1px;
             }
         }
 
-        .content {
-            margin:0;
-            ul {
-                background: url(../public/home/roadmap_line1.png) no-repeat center center;
-                height: 80vh;
-                position: relative;
-                background-size: auto 100%;
-                top: 0;
-                margin: 1rem 0;
+        .tab_content {
+            font-size: 0.6rem;
+            line-height: 0.8rem;
+            height: 24vh;
+            padding: 1rem;
+        }
+
+        .prices {
+            width: 100%;
+            padding-left: 0;
+
+            .btns_wrap {
+                flex-direction: row;
                 width: 100%;
-                li {
-                    position: absolute;
-                    h1 {
-                        color: #CCFD0A;
-                        font-size: 0.8rem;
-                    }
-                    h2 {
-                        font-size: 0.5rem;
-                        line-height: 0.7rem;
-                    }
+                justify-content: space-between;
 
-                    &:nth-child(1) {
-                        left: 10.7rem;
-                        bottom: 28rem;;
-                    }
+                .btn {
+                    margin-right: 0.5rem;
+                    width: auto;
+                    padding: 0.3rem 0.5rem;
+                    border-radius: 4px;
+                    height: 3.6rem;
 
-                    &:nth-child(2) {
-                      right: 10.7rem;
-                      left: auto;
-                      top: auto;
-                      bottom: 26rem;
-                      text-align: right;
-                      width: 6.6rem;
-                    }
-
-                    &:nth-child(3) {
-                      left: 10.7rem;
-                      bottom: 20rem;
-                      width: 7rem;
-                    }
-
-                    &:nth-child(4) {
-                      right: 10.7rem;
-                      left: auto;
-                      top: auto;
-                      bottom: 18rem;
-                      text-align: right;
-                      width: 6.6rem;
-                    }
-
-                    &:nth-child(5) {
-                      bottom: 12.5rem;
-                      left: 10.7rem;
-                      width: 6.8rem;
-                    }
-
-                    &:nth-child(6) {
-                      right: 10.7rem;
-                      left: auto;
-                      top: auto;
-                      bottom: 10.5rem;
-                      text-align: right;
-                      width: 8rem;
-                    }
-
-                    &:nth-child(7) {
-                      bottom: 6rem;
-                      left: 10.7rem;
-                      width: 7.2rem;
-                    }
-                    &:nth-child(8) {
-                      bottom: 4.2rem;
-                      right: 10.7rem;
-                      left: auto;
-                      top: auto;
-                      width: 7.8rem;
-                      text-align: right;
-                    }
-                }
-            }
-        }
-    }
-
-    .partner {
-        margin: 0 auto;
-        position: relative;
-        i.flag {
-            font-family: fifa;
-            -webkit-text-stroke: 1px white;
-            color: transparent;
-            font-style: normal;
-            position: absolute;
-            white-space: nowrap;
-            top: 2.4rem;
-            left: 0;
-            font-size: 1rem;
-            opacity: 0.4;
-            width: max-content;
-            animation: 100s wordsLoop linear infinite;
-            z-index: -1;
-        }
-        .title {
-            background: url(../public/home/our_partner.png) no-repeat left center/auto 100%;
-            height: 1.2rem;
-            display: block;
-            position: relative;
-            margin-bottom: 0.5rem;
-            i {
-                background: url(../public/home/our_partner_subtitle.png) no-repeat center/auto 100%;
-                position: absolute;
-                height: 0.8rem;
-                width:13rem;
-                top: 0.3rem;
-                left: 0.8rem;
-                opacity: 0.15;
-            }
-        }
-
-        .content {
-            padding: 0 1.2rem;
-            display: flex;
-            .outer {
-                .inner {
-                    @for $i from 1 to 20 {
-                        &:nth-child(#{$i}) {
-                            background: url(../public/imgs/team#{$i}.png) no-repeat left center/97% auto;
-                        }
-                    }
-                }
-            }
-        }
-    }
-    .qa{
-        position: relative;
-        
-        i.flag {
-            font-family: fifa;
-            -webkit-text-stroke: 1px white;
-            color: transparent;
-            font-style: normal;
-            position: absolute;
-            white-space: nowrap;
-            top: 5.4rem;
-            left: 0;
-            font-size: 1rem;
-            opacity: 0.4;
-            width: max-content;
-            animation: 100s wordsLoop linear infinite;
-            z-index: -1;
-        }
-
-        .title {
-            background: url(../public/home/qa_title.png) no-repeat left center/auto 100%;
-            height: 1.2rem;
-            display: block;
-            position: relative;
-            margin-bottom: 0.5rem;
-            flex-shrink: 0;
-
-            i {
-                background: url(../public/home/qa_subtitle.png) no-repeat center/auto 100%;
-                position: absolute;
-                height: 0.8rem;
-                width: 14rem;
-                top: 0.3rem;
-                left: 0.8rem;
-                opacity: 0.15;
-            }
-        }
-        .content{
-          align-items: flex-start;
-            ul{
-                li{
-                    position: relative;
-                    &.active{
-                        p{
-                            display: block;
-                        }
-                    }
-                    i{
-                        font-style: normal;
-                        background: #0A1C3E;
-                        border-radius: 5px;
-                        font-size: 0.8rem;
-                        width: 1.2rem;
-                        height: 1.2rem;
-                        position: absolute;
-                        text-align: center;
-                        line-height: 1.2rem;
-                        left: 0.1rem;
-                        top: 0.3rem;
-                    }
-                    h1{
-                        font-size: 0.8rem;
-                        border-bottom: 1px solid rgba(255,255,255,0.1);
-                        padding: 0.3rem 0;
-                        margin-bottom: 0.2rem;
-                        padding-left: 1.5rem;
-                        line-height: 1rem;
-                    }
-                    p{
+                    .label {
                         font-size: 0.7rem;
-                        color: #CCFD0A;
-                        display: none;
-                        line-height: 1rem;
+                        line-height: 1.2rem;
+                        white-space: nowrap;
                     }
+
+                    .val {
+                        font-size: .8rem;
+                        line-height: 1rem;
+
+                        .unit {
+                            font-size: 0.5rem;
+                        }
+                    }
+                }
+            }
+
+            .mint_video {
+                left: 50%;
+                transform: translateX(-50%);
+                top: 6rem;
+                width: 40%;
+                right: auto;
+                height: auto;
+            }
+
+            .mint_wrap {
+                width: 100%;
+                margin-top: 5rem;
+
+                .mint_btn {
+                    margin-top: 3.2rem;
+                    width: 4rem;
+                    height: 1.4rem;
+                }
+
+                .unit_price {
+                    font-size: 0.5rem;
                 }
             }
         }
     }
-  }
-  .mint {
-    padding-top: 3rem;
-    flex-wrap: wrap;
-    &::after{
-      display: none;
-    }
-    .tab_wrap{
-      width: 100%;
-    }
-    .tab{
-      width: 100%;
-      .tab_item{
-        width: 33%;
-        text-align: center;
-        margin-right: 10%;
-        font-size: 0.8rem;
-        &::after{
-          height: 2px;
-        }
-      }
-      &::after{
-        height: 1px;
-        bottom: -1px;
-      }
-    }
-    .tab_content{
-      font-size: 0.6rem;
-      line-height: 0.8rem;
-      height: 24vh;
-      padding: 1rem;
-    }
-   .prices{
-    width: 100%;
-    padding-left: 0;
-    .btns_wrap{
-      flex-direction: row;
-      width: 100%;
-      justify-content: space-between;
-      .btn{
-        margin-right: 0.5rem;
-        width: auto;
-        padding: 0.3rem 0.5rem;
-        border-radius: 4px;
-        height: 3.6rem;
-        .label{
-          font-size: 0.7rem;
-          line-height: 1.2rem;
-          white-space: nowrap;
-        }
-        .val{
-          font-size: .8rem;
-          line-height: 1rem;
-          .unit{
-            font-size: 0.5rem;
-          }
-        }
-      }
-    }
-    .mint_video{
-      left: 50%;
-      transform: translateX(-50%);
-      top: 6rem;
-      width: 60%;
-      right:auto;
-      height: auto;
-    }
-    .mint_wrap{
-      width: 100%;
-      margin-top: 5rem;
-      .mint_btn{
-        margin-top: 3.2rem;
-        width: 4rem;
-        height: 1.4rem;
-      }
-      .unit_price{
-        font-size: 0.5rem;
-      }
-    }
-   }
-  }
 }
 
 @keyframes drop {

@@ -23,33 +23,6 @@ const Header = (props) => {
     const {
         t
     } = useTranslation('common')
-    useEffect( () => {
-        // initNetWork()
-    }, [])    
-
-    const initNetWork = async () => {
-        let ethereum = window.ethereum
-        const data = [
-            {
-                // chainId: "0x61",
-                chainId: "0x38",
-                chainName: "Binance Smart Chain Mainnet",
-                nativeCurrency: {
-                    name: "BNB",
-                    symbol: "BNB",
-                    decimals: 18,
-                },
-                rpcUrls: ["https://bsc-dataseed.binance.org"],
-                blockExplorerUrls: ["https://bscscan.com/"],
-            },
-        ]
-
-        /* eslint-disable */
-        const tx = await ethereum.request({ method: "wallet_addEthereumChain", params: data }).catch()
-        if (tx) {
-            console.log(tx)
-        }
-    }
 
     const scrollToAnchor = (anchorName) => {
         if (anchorName) {
@@ -257,9 +230,9 @@ const Header = (props) => {
             </dl>
           </div>
 
-          {/* <div className={styles.wallet}>
+          <div className={styles.wallet}>
                     <Wallet />
-                </div> */}
+                </div>
         </nav>
         {/* <div className={styles.locale}>
           <Link href="#" locale={router.locale === 'en' ? 'zh' : 'en'}>

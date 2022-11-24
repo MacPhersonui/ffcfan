@@ -64,9 +64,9 @@ module.exports = {
             timeout: 20000,
         },
         bsc: {
-            url: "https://data-seed-prebsc-2-s1.binance.org:8545",
+            url: "https://bsc-testnet.public.blastapi.io",
             accounts: [mnemonic],
-            // timeout: 200000,
+            timeout: 200000,
         },
         eth: {
             url: "https://mainnet.infura.io/v3/3970ae72d3db40f6a6dfad8544b4da1c",
@@ -180,13 +180,13 @@ module.exports = {
     mocha: {
         timeout: 20000,
     },
-    // abiExporter: {
-    //     path: "./abi",
-    //     runOnCompile: true,
-    //     clear: true,
-    //     flat: true,
-    //     only: ['Reward.sol'],
-    // },
+    abiExporter: {
+        path: "./abi",
+        runOnCompile: true,
+        clear: true,
+        flat: true,
+        // only: ['Reward.sol'],
+    },
     etherscan: {
         apiKey: "XARD1DFR8AU129FVP25A33FRD6AE1EQSU3",
     },
