@@ -67,6 +67,7 @@ const Mint = () => {
   const [whiteListMintNum, setWhiteListMintNum] = useState(0)
   const [mintNum, setMintNum] = useState(0)
   const [whiteListMintStartTime, setWhiteListMintStartTime] = useState('1669405362')
+  const [totalSupply, setTotalSupply] = useState(0)
 
 
   const { ido } = tokenConfig
@@ -240,6 +241,8 @@ const Mint = () => {
         setFreemintNum(freemintNum)
         const whiteListMintNum = await idoContract.methods.chargeAllowlist(account).call()
         setWhiteListMintNum(whiteListMintNum)
+        const totalSupply = await idoContract.methods.totalSupply().call()
+        setTotalSupply(totalSupply)
         const tabIndex = await idoContract.methods.getRound().call() * 1
         setTabIndex(tabIndex)
         setRound(tabIndex)
@@ -297,7 +300,7 @@ const Mint = () => {
           ></div>
           <div className={styles.tab}>{Tab}</div>
           <div className={styles.tab_content}>{TabContent()}</div>
-          <Process percent={getPercent(alreadyMint[tabIndex], mintLimit[tabIndex])} />
+          <Process percent={getPercent(totalSupply, 1650)} />
         </div>
         <div className={styles.prices}>
           <div className={styles.btns_wrap}>
