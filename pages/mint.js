@@ -62,7 +62,7 @@ const Mint = () => {
   const [unitPrice, setUnitPrice] = useState(0)
   const [expirydate, setExpirydate] = useState(1669305362000)
   // ['1669305362', '1669505362', '1669705362', '1669905362']
-  const [publicPrice, setPublicPrice] = useState([0, 150000000000000000, 250000000000000000, 300000000000000000])
+  const [publicPrice, setPublicPrice] = useState(["0", "150000000000000000", "250000000000000000", "300000000000000000"])
   const [mintLimit, setMintLimit] = useState([50, 300, 500, 800])
   const [alreadyMint, setAlreadyMint] = useState([0, 0,0,0])
   const [publicSaleStartTime, setPublicSaleStartTime] = useState([0,0,0,0,0,0,0,0])
