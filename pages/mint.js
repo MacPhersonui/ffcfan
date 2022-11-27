@@ -260,6 +260,10 @@ const Mint = () => {
     switchPhase({id: 0})
     const timer = setInterval(async () => {
       if (account) {
+        const freemintNum = await idoContract.methods.allowlist(account).call()
+        setFreemintNum(freemintNum)
+        const whiteListMintNum = await idoContract.methods.chargeAllowlist(account).call()
+        setWhiteListMintNum(whiteListMintNum)
         const publicPrice1 = await idoContract.methods.publicPrice(0).call()
         const publicPrice2 = await idoContract.methods.publicPrice(1).call()
         const publicPrice3 = await idoContract.methods.publicPrice(2).call()
@@ -303,10 +307,6 @@ const Mint = () => {
             publicSaleStartTime6
           ])
         setWhiteListMintStartTime(whiteListMintStartTime)
-        const freemintNum = await idoContract.methods.allowlist(account).call()
-        setFreemintNum(freemintNum)
-        const whiteListMintNum = await idoContract.methods.chargeAllowlist(account).call()
-        setWhiteListMintNum(whiteListMintNum)
         const totalSupply = await idoContract.methods.totalSupply().call()
         setTotalSupply(totalSupply)
         const tabIndex = await idoContract.methods.getRound().call() * 1
