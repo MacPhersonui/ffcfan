@@ -236,7 +236,7 @@ const Mint = () => {
     })
   }
 
-  useEffect(() => {
+  useEffect(async () => {
     initNetWork()
     // setPercent(91) // 设置百分比
     // setExpirydate('2022-11-21') // 设置倒计时日期
@@ -250,7 +250,7 @@ const Mint = () => {
       round,
       totalSupply,
       whiteListMintStartTime
-    } = getIdoData()
+    } = await getIdoData()
     setAlreadyMint(alreadyMint)
     setPublicSaleStartTime(publicSaleStartTime)
     setRound(round)
