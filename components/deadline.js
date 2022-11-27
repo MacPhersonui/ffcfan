@@ -2,16 +2,14 @@ import styles from '../styles/deadline.module.scss'
 import React from 'react'
 import { useState, useEffect } from 'react'
 
-const Deadline = ({ date }) => {
+const Deadline = ({ timestamp }) => {
 const [day, setDay] = useState('0')
 const [hour, setHour] = useState('0')
 const [minutes, setMinutes] = useState('0')
 const [second, setSecond] = useState('0')
 const [errorShow, setErrorShow] = useState(false)
 const getDeadline = () => {
-  const end = new Date(date)
-  const dif = end - Date.now()
- 
+  const dif = timestamp - Date.now()
   if (dif < 0) {
     return setErrorShow(false)
   }

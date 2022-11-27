@@ -87,6 +87,7 @@
         font-size: 0.4rem;
         margin-right: 0.5rem;
         padding-top: 0.65rem;
+        margin-right: 2.3rem;
         &:hover{
             dt{
                 display: block;
@@ -108,7 +109,8 @@
     }
 
     .wallet {
-        float: right;
+      position: absolute;
+      right: 0;
     }
 }
 
@@ -362,7 +364,8 @@
         }
 
         .wallet {
-            float: right;
+            position: absolute;
+            right: 1rem;
         }
     }
 

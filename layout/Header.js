@@ -231,8 +231,8 @@ const Header = (props) => {
           </div>
 
           <div className={styles.wallet}>
-                    <Wallet />
-                </div>
+              <Wallet />
+          </div>
         </nav>
         {/* <div className={styles.locale}>
           <Link href="#" locale={router.locale === 'en' ? 'zh' : 'en'}>

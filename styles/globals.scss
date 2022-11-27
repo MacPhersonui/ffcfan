@@ -219,6 +219,7 @@ body.react-confirm-alert-body-element {
   overflow: hidden;
 }
 
+
 .react-confirm-alert-blur {
   filter: url(#gaussian-blur);
   filter: blur(2px);
@@ -330,45 +331,7 @@ body.react-confirm-alert-body-element {
   }
 }
 
-.confirmAlert {
-  background: #181c21;
-  border-radius: 6.666px;
-  box-sizing: border-box;
-  padding: 20px 20px;
-  width: 460px;
-  text-align: center;
-  color: #fff;
-  font-family: 'bahnschrift';
 
-  h1 {
-    font-size: 18px;
-    padding: 10px 0;
-  }
-
-  p {
-    font-size: 14px;
-    opacity: 0.6;
-
-    b {
-      font-weight: normal;
-      color: #f6ba5e;
-    }
-  }
-
-  button {
-    color: #ffffff;
-    border: 1px solid #fff;
-    background: none;
-    font-size: 14px;
-    text-decoration: none;
-    padding: 8px 25px;
-    border-radius: 4px;
-    margin: 10px 10px 20px 10px;
-    width: auto;
-    cursor: pointer;
-    display: inline-block;
-  }
-}
 
 .swiper {
   width: 100%;
@@ -484,6 +447,37 @@ body.react-confirm-alert-body-element {
   }
 }
 
+.custom-alert-ui {
+    background: #181c21;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 0.4rem;
+    text-align: center;
+    color: #fff;
+    h1 {
+      font-size: 0.35rem;
+      padding: 10px 0;
+    }
+    p {
+      font-size: 0.3rem;
+      opacity: 0.6;
+      b {
+        font-weight: normal;
+        color: #f6ba5e;
+      }
+    }
+    button {
+      color: #ffffff;
+      border: 1px solid #fff;
+      background: none;
+      font-size: 0.2rem;
+      padding: 8px 25px;
+      border-radius: 4px;
+      margin: 0.2rem;
+      cursor: pointer;
+    }
+}
+
 @media screen and (max-width: 600px) {
   .section{
     &.fp-table{
@@ -500,4 +494,24 @@ body.react-confirm-alert-body-element {
   .mySwiper {
     height: 15%;
   }
+  .custom-alert-ui {
+    padding: 1rem;
+    width: 70vw;
+      h1 {
+        font-size: 0.8rem;
+      }
+      p {
+        font-size: 0.5rem;
+        opacity: 0.6;
+        b {
+          font-weight: normal;
+          color: #f6ba5e;
+        }
+      }
+      button {
+        font-size: 0.5rem;
+        padding: 0.8em 1rem;
+      }
+  }
+
 }

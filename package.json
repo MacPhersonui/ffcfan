@@ -34,6 +34,7 @@
     "hardhat": "^2.8.4",
     "hardhat-abi-exporter": "^2.8.0",
     "hardhat-log-remover": "^2.0.2",
+    "moment": "^2.29.4",
     "morgan": "^1.10.0",
     "mysql2": "^1.7.0",
     "next": "12.0.10",

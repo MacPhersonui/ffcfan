@@ -14,11 +14,13 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import tokenConfig from "../contract.config"
 import { confirmAlert } from "react-confirm-alert"
-import {
-  utils
-} from "ethers"
+import moment from 'moment'
+import { utils } from "ethers"
+import { getIdoData } from '../api/api'
+
 
 const cx = classNames.bind(styles)
+
 
 const Mint = () => {
   const {
@@ -52,17 +54,19 @@ const Mint = () => {
   const [swapCount, setSwapCount] = useState(4)
   const [scrolling] = useState(false)
   const [tabIndex, setTabIndex] = useState(0)
+  const [advance, setAdvance] = useState(false)
+  const [overdue, setOverdue] = useState(false)
   const [passcard, setPasscard] = useState(1600)
   const [circulation, setCirculation] = useState(600)
   const [percent, setPercent] = useState(0)
   const [unitPrice, setUnitPrice] = useState(0)
-  const [expirydate, setExpirydate] = useState(['1669305362', '1669505362', '1669705362', '1669905362'])
+  const [expirydate, setExpirydate] = useState(1669305362000)
+  // ['1669305362', '1669505362', '1669705362', '1669905362']
   const [publicPrice, setPublicPrice] = useState([0, 0.15,0.25,0.3])
   const [mintLimit, setMintLimit] = useState([50, 300, 500, 800])
   const [alreadyMint, setAlreadyMint] = useState([0, 0,0,0])
-  const [publicSaleStartTime, setPublicSaleStartTime] = useState([0,0,0,0,0,0])
+  const [publicSaleStartTime, setPublicSaleStartTime] = useState([0,0,0,0,0,0,0,0])
   const [round, setRound] = useState(0)
-  const [show, setShow] = useState(true)
   const [freemintNum, setFreemintNum] = useState(0)
   const [whiteListMintNum, setWhiteListMintNum] = useState(0)
   const [mintNum, setMintNum] = useState(0)
@@ -81,10 +85,8 @@ const Mint = () => {
           active: tabIndex === item.id
         })}
         key={item.id}
-        onClick={() => {
-          setShow(false)
-          setTabIndex(item.id)
-          setShow(true)
+        onClick={()=> {
+          switchPhase(item)
         }}
       >
         {item.name}
@@ -116,7 +118,15 @@ const Mint = () => {
       )
     }
   }
-
+  const getDate = ()=> {
+      if (advance) {
+        return <div className={styles.dateStauts}>Not Started！</div>
+      }
+      if (overdue) {
+        return <div className={styles.dateStauts}>Expired！</div>
+      }
+      return <Deadline timestamp={expirydate} />
+  }
   const initNetWork = async () => {
     let ethereum = window.ethereum
     const data = [{
@@ -141,30 +151,51 @@ const Mint = () => {
       console.log(tx)
     }
   }
-
-  const getPercent = (a,p) =>{
+  const switchPhase = ({ id }) => {
+    setTabIndex(id)
+    console.log(publicSaleStartTime)
+    let startTime, endTime;
+    if (id === 1 && whiteListMintNum * 1 > 0) {
+      startTime = whiteListMintStartTime * 1000
+      endTime = publicSaleStartTime[2] * 1000
+    } else {
+      startTime = publicSaleStartTime[id * 2] * 1000
+      endTime = publicSaleStartTime[id * 2 + 1] * 1000
+    }
+     console.log(moment(startTime).format('YYYY-MM-DD'))
+     console.log(moment(endTime).format('YYYY-MM-DD'))
+     console.log(startTime)
+     console.log(endTime)
+     console.log(Date.now())
+     
+     if (Date.now() >= startTime && Date.now() <= endTime) {
+       setExpirydate(endTime)
+     }
+    setAdvance(Date.now() < startTime)
+    setOverdue(Date.now() > endTime)
+  }
+  const getPercent = (a, p) =>{
     return (((a * 1) / (p * 1)) * 100).toFixed(2)
   }
-
   const checkWallet = () => {
       if (!account) {
           confirmAlert({
               customUI: ({ onClose }) => {
                   return (
-                      <div className={styles.confirmAlert}>
-                          <h1>Please connect wallet</h1>
-                          <p className={styles.center}>
-                              <button
-                                  onClick={() => {
-                                      wallet.connect()
-                                      onClose()
-                                  }}
-                              >
-                                  OK
-                              </button>
-                              <button onClick={onClose}>Cancel</button>
-                          </p>
-                      </div>
+                    <div className="custom-alert-ui">
+                      <h1>Please connect wallet</h1>
+                      <p className={styles.center}>
+                        <button
+                          onClick={() => {
+                            wallet.connect()
+                            onClose()
+                          }}
+                        >
+                          OK
+                        </button>
+                        <button onClick={onClose}>Cancel</button>
+                      </p>
+                    </div>
                   )
               },
           })
@@ -183,6 +214,23 @@ const Mint = () => {
 
   const freemint = async()=>{
     if (checkWallet()) return
+    if (freemintNum * 1 === 0) {
+      confirmAlert({
+        customUI: ({ onClose }) => {
+          return (
+            <div className="custom-alert-ui">
+              <h1>
+                Not on the white list, please participate in the public sale！
+              </h1>
+              <p className={styles.center}>
+                <button onClick={onClose}>Ok</button>
+              </p>
+            </div>
+          )
+        }
+      })
+      return
+    }
     await idoContract.methods.allowlistMint().send({
       from: account
     })
@@ -195,13 +243,36 @@ const Mint = () => {
     // setUnitPrice(0.15) // 设置单价
     // setPasscard(300)
     // setCirculation(0)
-
+    console.log(getIdoData())
+    const {
+      alreadyMint,
+      publicSaleStartTime,
+      round,
+      totalSupply,
+      whiteListMintStartTime
+    } = getIdoData()
+    setAlreadyMint(alreadyMint)
+    setPublicSaleStartTime(publicSaleStartTime)
+    setRound(round)
+    setTotalSupply(totalSupply)
+    setWhiteListMintStartTime(whiteListMintStartTime)
+    setExpirydate(publicSaleStartTime[0] * 1000)
+    switchPhase({id: 0})
     const timer = setInterval(async () => {
       if (account) {
-        const publicPrice1 = utils.formatEther(await idoContract.methods.publicPrice(0).call())
-        const publicPrice2 = utils.formatEther(await idoContract.methods.publicPrice(1).call())
-        const publicPrice3 = utils.formatEther(await idoContract.methods.publicPrice(2).call())
-        const publicPrice4 = utils.formatEther(await idoContract.methods.publicPrice(3).call())
+        const publicPrice1 = Number(
+          utils.formatEther(await idoContract.methods.publicPrice(0).call())
+        )
+        const publicPrice2 = Number(
+          utils.formatEther(await idoContract.methods.publicPrice(1).call())
+        )
+        const publicPrice3 = Number(
+          utils.formatEther(await idoContract.methods.publicPrice(2).call())
+        )
+        const publicPrice4 = Number(
+          utils.formatEther(await idoContract.methods.publicPrice(3).call())
+        )
+        console.log(publicPrice4)
         setPublicPrice([publicPrice1, publicPrice2, publicPrice3, publicPrice4])
         console.log("publicPrice", publicPrice)
         const mintLimit1 = await idoContract.methods.mintLimit(0).call()
@@ -222,21 +293,24 @@ const Mint = () => {
         const publicSaleStartTime4 = await idoContract.methods.publicSaleStartTime(3).call()
         const publicSaleStartTime5 = await idoContract.methods.publicSaleStartTime(4).call()
         const publicSaleStartTime6 = await idoContract.methods.publicSaleStartTime(5).call()
-        setPublicSaleStartTime([
-          publicSaleStartTime1, 
-          publicSaleStartTime2, 
-          publicSaleStartTime3, 
-          publicSaleStartTime4, 
-          publicSaleStartTime5, 
-          publicSaleStartTime6
-        ])
+      
         console.log("publicSaleStartTime", publicSaleStartTime)
         const freeMintStartTime = await idoContract.methods.freeMintStartTime().call()
         const whiteListMintStartTime = await idoContract.methods.whiteListMintStartTime().call()
-        const whiteListMintEndTime = await idoContract.methods.whiteListMintEndTime().call()
-        setExpirydate(freeMintStartTime, publicSaleStartTime1, publicSaleStartTime3, publicSaleStartTime5)
+        console.log(whiteListMintStartTime)
+        const freeMintEndTime = await idoContract.methods.whiteListMintEndTime().call()
+        setExpirydate(freeMintStartTime * 1000)
+          setPublicSaleStartTime([
+            freeMintStartTime,
+            freeMintEndTime,
+            publicSaleStartTime1,
+            publicSaleStartTime2,
+            publicSaleStartTime3,
+            publicSaleStartTime4,
+            publicSaleStartTime5,
+            publicSaleStartTime6
+          ])
         setWhiteListMintStartTime(whiteListMintStartTime)
-        console.log("expirydate", expirydate)
         const freemintNum = await idoContract.methods.allowlist(account).call()
         setFreemintNum(freemintNum)
         const whiteListMintNum = await idoContract.methods.chargeAllowlist(account).call()
@@ -254,13 +328,13 @@ const Mint = () => {
     if (windowWidth <= 600) {
       setSwapCount(1)
     }
-    const handleScroll = event => {
-      console.log('window.scrollY', window.scrollY)
-      // console.log("roadmap", document.getElementById("roadmap").getBoundingClientRect().top)
-      console.log("events", event)
-    }
+    // const handleScroll = event => {
+    //   console.log('window.scrollY', window.scrollY)
+    //   // console.log("roadmap", document.getElementById("roadmap").getBoundingClientRect().top)
+    //   console.log("events", event)
+    // }
 
-    window.addEventListener('scroll', handleScroll)
+    // window.addEventListener('scroll', handleScroll)
 
     //loading
     document.getElementById("loading").classList.add("animate__animated", "animate__fadeOut", "animate__slower")
@@ -270,7 +344,7 @@ const Mint = () => {
 
     return () => {
       clearInterval(timer)
-      window.removeEventListener('scroll', handleScroll)
+      // window.removeEventListener('scroll', handleScroll)
     }
   }, [account])
 
@@ -327,36 +401,54 @@ const Mint = () => {
             </div>
             <div className={cx(styles.deadline, styles.btn)}>
               <div className={styles.label}>{t('deadline')}</div>
-              <div className={styles.val}>
-                {show && <Deadline date={new Date(expirydate[tabIndex]*1000).toDateString()} />}
+              <div className={styles.val}>{getDate()}</div>
+            </div>
+          </div>
+          {tabIndex != 0 && (
+            <div className={styles.mint_wrap}>
+              <div className={styles.input_wrap}>
+                <input
+                  value={mintNum}
+                  onChange={(e) => {
+                    setMintNum(e.target.value)
+                  }}
+                  className={styles.mint_input}
+                  type="number"
+                  min="1"
+                  max="10"
+                />
+                <div
+                  onClick={() => mint()}
+                  className={cx(styles.mint_btn, {
+                    fr: router.locale === 'fr'
+                  })}
+                ></div>
               </div>
+              <div className={styles.unit_price}>
+                {t('unit_price')}: {publicPrice[tabIndex]} ETH / NFT
+              </div>
+              {tabIndex === 1 &&
+                Date.now() >= whiteListMintStartTime * 1000 &&
+                Date.now() < publicSaleStartTime[2] * 1000 && (
+                  <>
+                    <span className={styles.mintTip}>
+                      Mint available: {whiteListMintNum} NFTs
+                    </span>
+                  </>
+                )}
             </div>
-          </div>
-          {tabIndex != 0 && <div className={styles.mint_wrap}>
-            <div>
-              <input value={mintNum} onChange={(e)=>{
-                setMintNum(e.target.value)
-              }} className={styles.mint_input} type="number" min="1" max="10" />
-              <div onClick={()=>mint()} className={cx(styles.mint_btn, { fr: router.locale === 'fr' })} ></div>
-            </div>
-            <div className={styles.unit_price}>
-              {t('unit_price')}: {publicPrice[tabIndex]} ETH / NFT
-            </div>
-            {tabIndex == 1 && parseInt((new Date()).getTime() / 1000) >= whiteListMintStartTime &&  parseInt((new Date()).getTime() / 1000) < publicSaleStartTime[0] &&
-              <>
-                <span>Mint available: {whiteListMintNum} NFTs</span>
-              </>
-            }
-          </div>
-          }
-          {
-            tabIndex == 0 
-            && 
+          )}
+          {tabIndex == 0 && (
             <div className={styles.freemint}>
-              <span>Mint available: {freemintNum} NFTs</span>
-              <button onClick={()=>freemint()} className={styles.freemint_btn}></button>
+              <span className={styles.mintTip}>
+                Mint available: {freemintNum} NFTs
+              </span>
+              <button
+                onClick={() => freemint()}
+                className={styles.freemint_btn}
+              ></button>
             </div>
-          }
+          )}
           <video
             className={styles.mint_video}
             src="/home/mint.mp4"
