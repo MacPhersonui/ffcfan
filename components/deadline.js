@@ -15,7 +15,7 @@ const getDeadline = () => {
   }
   const secondVal = Math.floor((dif / 1000) % 60) 
   const minuteVal = Math.floor((dif / 1000 / 60) % 60)
-  const hourVal = Math.floor((dif / 1000 / 60 / 60) % 60)
+  const hourVal = Math.floor((dif / 1000 / 60 / 60) % 60 % 24)
   const dayVal = Math.floor(dif / 1000 / 60 / 60 / 24)
   const getVal = (val)=>{
     return val<10 ? '0' + String(val) : String(val)

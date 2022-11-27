@@ -206,8 +206,9 @@ const Mint = () => {
 
   const mint = async()=>{
     if (checkWallet()) return
+    if (tabIndex != round) return
     console.log("mint", mintNum * publicPrice[round])
-    await idoContract.methods.publicSaleMint(1, 0).send({
+    await idoContract.methods.publicSaleMint(mintNum, 0).send({
       from: account,
       value: mintNum * publicPrice[round]
     })
@@ -275,7 +276,7 @@ const Mint = () => {
         const mintLimit2 = await idoContract.methods.mintLimit(1).call()
         const mintLimit3 = await idoContract.methods.mintLimit(2).call()
         const mintLimit4 = await idoContract.methods.mintLimit(2).call()
-        setAlreadyMint([mintLimit1, mintLimit2, mintLimit3, mintLimit4])
+        setMintLimit([mintLimit1, mintLimit2, mintLimit3, mintLimit4])
         console.log("mintLimit", mintLimit)
         const alreadyMint1 = await idoContract.methods.alreadyMint(0).call()
         const alreadyMint2 = await idoContract.methods.alreadyMint(1).call()
@@ -310,7 +311,7 @@ const Mint = () => {
         const totalSupply = await idoContract.methods.totalSupply().call()
         setTotalSupply(totalSupply)
         const tabIndex = await idoContract.methods.getRound().call() * 1
-        setTabIndex(tabIndex)
+        // setTabIndex(tabIndex)
         setRound(tabIndex)
         console.log("group", tabIndex)
       }
@@ -412,13 +413,14 @@ const Mint = () => {
                 <div
                   onClick={() => mint()}
                   className={cx(styles.mint_btn, {
+                    disable: tabIndex != round
+                  }, {
                     fr: router.locale === 'fr'
                   })}
                 ></div>
               </div>
               <div className={styles.unit_price}>
-                {t('unit_price')}: {Number(
-          utils.formatEther(publicPrice[tabIndex]))} ETH / NFT
+                {t('unit_price')}: {Number(utils.formatEther(publicPrice[tabIndex]))} ETH / NFT
               </div>
               {tabIndex === 1 &&
                 Date.now() >= whiteListMintStartTime * 1000 &&
@@ -438,7 +440,7 @@ const Mint = () => {
               </span>
               <button
                 onClick={() => freemint()}
-                className={styles.freemint_btn}
+                className = {styles.freemint_btn}
               ></button>
             </div>
           )}
