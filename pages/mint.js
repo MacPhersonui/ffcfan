@@ -62,14 +62,14 @@ const Mint = () => {
   const [unitPrice, setUnitPrice] = useState(0)
   const [expirydate, setExpirydate] = useState(1669305362000)
   // ['1669305362', '1669505362', '1669705362', '1669905362']
-  const [publicPrice, setPublicPrice] = useState([0, 0.15,0.25,0.3])
+  const [publicPrice, setPublicPrice] = useState([0, 150000000000000000, 250000000000000000, 300000000000000000])
   const [mintLimit, setMintLimit] = useState([50, 300, 500, 800])
   const [alreadyMint, setAlreadyMint] = useState([0, 0,0,0])
   const [publicSaleStartTime, setPublicSaleStartTime] = useState([0,0,0,0,0,0,0,0])
   const [round, setRound] = useState(0)
   const [freemintNum, setFreemintNum] = useState(0)
   const [whiteListMintNum, setWhiteListMintNum] = useState(0)
-  const [mintNum, setMintNum] = useState(0)
+  const [mintNum, setMintNum] = useState(1)
   const [whiteListMintStartTime, setWhiteListMintStartTime] = useState('1669405362')
   const [totalSupply, setTotalSupply] = useState(0)
 
@@ -206,6 +206,7 @@ const Mint = () => {
 
   const mint = async()=>{
     if (checkWallet()) return
+    console.log("mint", mintNum * publicPrice[round])
     await idoContract.methods.publicSaleMint(1, 0).send({
       from: account,
       value: mintNum * publicPrice[round]
@@ -243,7 +244,6 @@ const Mint = () => {
     // setUnitPrice(0.15) // 设置单价
     // setPasscard(300)
     // setCirculation(0)
-    console.log(getIdoData())
     const {
       alreadyMint,
       publicSaleStartTime,
@@ -260,19 +260,11 @@ const Mint = () => {
     switchPhase({id: 0})
     const timer = setInterval(async () => {
       if (account) {
-        const publicPrice1 = Number(
-          utils.formatEther(await idoContract.methods.publicPrice(0).call())
-        )
-        const publicPrice2 = Number(
-          utils.formatEther(await idoContract.methods.publicPrice(1).call())
-        )
-        const publicPrice3 = Number(
-          utils.formatEther(await idoContract.methods.publicPrice(2).call())
-        )
-        const publicPrice4 = Number(
-          utils.formatEther(await idoContract.methods.publicPrice(3).call())
-        )
-        console.log(publicPrice4)
+        const publicPrice1 = await idoContract.methods.publicPrice(0).call()
+        const publicPrice2 = await idoContract.methods.publicPrice(1).call()
+        const publicPrice3 = await idoContract.methods.publicPrice(2).call()
+        const publicPrice4 = await idoContract.methods.publicPrice(3).call()
+        console.log("publicPrice4" ,publicPrice4)
         setPublicPrice([publicPrice1, publicPrice2, publicPrice3, publicPrice4])
         console.log("publicPrice", publicPrice)
         const mintLimit1 = await idoContract.methods.mintLimit(0).call()
@@ -425,7 +417,8 @@ const Mint = () => {
                 ></div>
               </div>
               <div className={styles.unit_price}>
-                {t('unit_price')}: {publicPrice[tabIndex]} ETH / NFT
+                {t('unit_price')}: {Number(
+          utils.formatEther(publicPrice[tabIndex]))} ETH / NFT
               </div>
               {tabIndex === 1 &&
                 Date.now() >= whiteListMintStartTime * 1000 &&
