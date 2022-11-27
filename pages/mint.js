@@ -315,7 +315,7 @@ const Mint = () => {
         console.log("group", tabIndex)
       }
       clearInterval(timer)
-    }, 3000)
+    }, 1500)
     const windowWidth = document.body.clientWidth
     if (windowWidth <= 600) {
       setSwapCount(1)
