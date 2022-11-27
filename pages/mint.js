@@ -314,7 +314,7 @@ const Mint = () => {
         setRound(tabIndex)
         console.log("group", tabIndex)
       }
-      clearInterval(timer)
+      // clearInterval(timer)
     }, 1500)
     const windowWidth = document.body.clientWidth
     if (windowWidth <= 600) {
