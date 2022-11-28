@@ -33,7 +33,7 @@ for (let index = 0; index < 20 ;index++) {
         <div className={styles.progress_box}>{item}</div>
         <span>{percent}%</span>
       </div>
-      <div>FFC League Rights Card = 1NFT + 20000 $FFC</div>
+      <div> League of FFC Rights Card = 1 NFT + 20000 $FFC </div>
     </div>
   )
 }
