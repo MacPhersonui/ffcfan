@@ -19,11 +19,10 @@ const Header = (props) => {
     const [openState, setopenState] = useState(false)
   
     const router = useRouter()
-    console.log(router);
     const {
         t
     } = useTranslation('common')
-
+    
     const scrollToAnchor = (anchorName) => {
         if (anchorName) {
             let anchorElement = document.getElementById(anchorName)

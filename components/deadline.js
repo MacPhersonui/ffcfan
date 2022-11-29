@@ -24,15 +24,16 @@ const getDeadline = () => {
   setMinutes(getVal(minuteVal))
   setHour(getVal(hourVal))
   setDay(String(dayVal))
+  console.log(secondVal)
 }
 useEffect(() => {
   const timer = setInterval(() => {
     getDeadline()
-  }, 1000);
+  }, 1000)
   return () => {
     clearInterval(timer)
-  };
-});
+  }
+})
 const getContent = () => {
   return errorShow ? (
     <>已过期！</>
