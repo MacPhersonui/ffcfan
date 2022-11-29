@@ -41,9 +41,6 @@ contract FFCNFT is Ownable, ERC721A, ReentrancyGuard {
       if(block.timestamp >= publicSaleStartTime[0] && block.timestamp < publicSaleStartTime[1]){
         round = 0;
       }
-      if(block.timestamp >= publicSaleStartTime[2] && block.timestamp < publicSaleStartTime[3]){
-        round = 1;
-      }
       if(block.timestamp >= publicSaleStartTime[4] && block.timestamp < publicSaleStartTime[5]){
         round = 2;
       }
@@ -68,22 +65,12 @@ contract FFCNFT is Ownable, ERC721A, ReentrancyGuard {
     int round = getRound();
     uint256 roundUint = uint256(round);
     require(roundUint >= 0, "Has not yet started");
-    if(block.timestamp >= publicSaleStartTime[2] && block.timestamp < publicSaleStartTime[3]){
-      require(chargeAllowlist[msg.sender] > 0, "not eligible for allowlist mint");
-      require(alreadyMint[roundUint] + quantity <= mintLimit[roundUint], "The limit of this round has been reached");
-      chargeAllowlist[msg.sender] = chargeAllowlist[msg.sender].sub(quantity);
-      alreadyMint[roundUint] =  alreadyMint[roundUint] + quantity;
-      count[index] = count[index] + quantity;
-      _safeMint(msg.sender, quantity);
-      refundIfOver(publicPrice[roundUint] * quantity);
-    }else{
-        require(block.timestamp >= publicSaleStartTime[4], "Has not yet started");
-        require(alreadyMint[roundUint] + quantity <= mintLimit[roundUint], "The limit of this round has been reached");
-        alreadyMint[roundUint] =  alreadyMint[roundUint] + quantity;
-        count[index] = count[index] + quantity;
-        _safeMint(msg.sender, quantity);
-        refundIfOver(publicPrice[roundUint] * quantity);
-    }
+    require(block.timestamp >= publicSaleStartTime[4], "Has not yet started");
+    require(alreadyMint[roundUint] + quantity <= mintLimit[roundUint], "The limit of this round has been reached");
+    alreadyMint[roundUint] =  alreadyMint[roundUint] + quantity;
+    count[index] = count[index] + quantity;
+    _safeMint(msg.sender, quantity);
+    refundIfOver(publicPrice[roundUint] * quantity);
   }
 
   function refundIfOver(uint256 price) private {
@@ -122,11 +109,22 @@ contract FFCNFT is Ownable, ERC721A, ReentrancyGuard {
   function allowlistMint(uint256 quantity, uint256 index) external payable callerIsUser {
     require(block.timestamp >=  publicSaleStartTime[0] && block.timestamp < publicSaleStartTime[1], "mint has not started or has ended");
     require(allowlist[msg.sender] > 0, "not eligible for allowlist mint");
-    require(totalSupply() + allowlist[msg.sender] <= collectionSize, "reached max supply");
+    require(totalSupply() + quantity <= collectionSize, "reached max supply");
     _safeMint(msg.sender, quantity);
     count[index] = count[index] +  quantity;
     alreadyMint[0] =  alreadyMint[0] + allowlist[msg.sender];
     allowlist[msg.sender] = allowlist[msg.sender].sub(quantity);
+  }
+
+  function allowChargelistMint(uint256 quantity, uint256 index) external payable callerIsUser {
+    require(block.timestamp >=  publicSaleStartTime[2] && block.timestamp < publicSaleStartTime[3], "mint has not started or has ended");
+    require(chargeAllowlist[msg.sender] > 0, "not eligible for allowlist mint");
+    require(totalSupply() + quantity <= collectionSize, "reached max supply");
+    _safeMint(msg.sender, quantity);
+    count[index] = count[index] +  quantity;
+    alreadyMint[1] =  alreadyMint[1] + chargeAllowlist[msg.sender];
+    chargeAllowlist[msg.sender] = chargeAllowlist[msg.sender].sub(quantity);
+    refundIfOver(publicPrice[1] * quantity);
   }
 
   function _beforeTokenTransfers(

@@ -16,7 +16,7 @@ async function main() {
     this.deployer = (await ethers.getSigners())[0].address
     console.log("deployer address", this.deployer)
 
-    this.FFCNFT = await FFCNFT.new(100, 1650, [1669660116, 1669760116, 1669860116, 1669960116, 1670060116, 1671060116, 1672060116, 1673060116, 1674060116, 1675060116])
+    this.FFCNFT = await FFCNFT.new(10, 1650, [1669660116, 1669760116, 1669860116, 1669960116, 1670060116, 1671060116, 1672060116, 1673060116, 1674060116, 1675060116])
     console.log("FFCNFT", this.FFCNFT.address)
     // await this.FFCNFT.seedAllowlist(["0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"],["10"])
     // await this.FFCNFT.allowlistMint(1,0)
@@ -26,10 +26,10 @@ async function main() {
     // await ethers.provider.send("evm_mine")
 
     // await this.FFCNFT.seedChargeAllowlist(['0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266'], [30])
-    // await this.FFCNFT.publicSaleMint(20, 0,{
+    // await this.FFCNFT.allowChargelistMint(20, 0, {
     //     value: hre.ethers.utils.parseEther("3", "ether")
     // })
-    // await this.FFCNFT.publicSaleMint(10, 0, {
+    // await this.FFCNFT.allowChargelistMint(10, 0, {
     //     value: hre.ethers.utils.parseEther("1.5", "ether")
     // })
     // console.log((await this.FFCNFT.numberMinted(this.deployer)).toString())
@@ -61,7 +61,7 @@ async function main() {
     // })
     // console.log((await this.FFCNFT.numberMinted(this.deployer)).toString())
 
-    // await this.FFCNFT.transferFrom(this.deployer, "0x5DDFE249E3F9F7F56e0cAc8fb57431FEAb836af5", 1)
+    // // await this.FFCNFT.transferFrom(this.deployer, "0x5DDFE249E3F9F7F56e0cAc8fb57431FEAb836af5", 1)
 
     // await ethers.provider.send("evm_setNextBlockTimestamp", [1675060117])
     // await ethers.provider.send("evm_mine")
