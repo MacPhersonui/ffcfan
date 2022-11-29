@@ -69,11 +69,8 @@ const Mint = () => {
   const [tabIndex, setTabIndex] = useState(0)
   const [advance, setAdvance] = useState(false)
   const [overdue, setOverdue] = useState(false)
-  const [passcard, setPasscard] = useState(1600)
-  const [circulation, setCirculation] = useState(600)
-  const [percent, setPercent] = useState(0)
-  const [unitPrice, setUnitPrice] = useState(0)
   const [expirydate, setExpirydate] = useState(1669305362000)
+  const [mintedAccount, setMintedAccount] = useState(0)
   const [publicPrice, setPublicPrice] = useState([
     '0',
     '150000000000000000',
@@ -208,9 +205,25 @@ const Mint = () => {
       return false
   }
 
-  const mint = async()=>{
+  const mint = async()=> {
+    
     if (checkWallet()) return
     if (!getInornotPhase()) return
+    if (mintNum * 1 + mintedAccount * 1 > 10) {
+      confirmAlert({
+        customUI: ({ onClose }) => {
+          return (
+            <div className="custom-alert-ui">
+              <h1>Your mint quantity exceeds the upper limit 10 ！</h1>
+              <p className={styles.center}>
+                <button onClick={onClose}>Ok</button>
+              </p>
+            </div>
+          )
+        }
+      })
+      return
+    }
     await idoContract.methods.publicSaleMint(mintNum, 0).send({
       from: account,
       value: mintNum * publicPrice[tabIndex]
@@ -235,6 +248,21 @@ const Mint = () => {
       })
       return
     }
+     if (mintNum * 1 + mintedAccount * 1 > 10) {
+       confirmAlert({
+         customUI: ({ onClose }) => {
+           return (
+             <div className="custom-alert-ui">
+               <h1>Your mint quantity exceeds the upper limit 10 ！</h1>
+               <p className={styles.center}>
+                 <button onClick={onClose}>Ok</button>
+               </p>
+             </div>
+           )
+         }
+       })
+       return
+     }
     if (!getInornotPhase()) return
     await idoContract.methods.allowlistMint(freemintAmount, 0).send({
       from: account
@@ -284,6 +312,10 @@ const Mint = () => {
       if (account) {
         const freemintNum = await idoContract.methods.allowlist(account).call()
         setFreemintNum(freemintNum)
+        const mintedAccount = await idoContract.methods
+          .numberMinted(account)
+          .call()
+        setMintedAccount(mintedAccount)
         const whiteListMintNum = await idoContract.methods.chargeAllowlist(account).call()
         setWhiteListMintNum(whiteListMintNum)
         const limitPromise = [], pricePromise = [], mintedPromise = [], timePromise = []
