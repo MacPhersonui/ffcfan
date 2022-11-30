@@ -13,13 +13,10 @@ contract FFCNFT is Ownable, ERC721A, ReentrancyGuard {
   using SafeMath for uint256;
 
   uint256 public immutable maxPerAddressDuringMint;
-  uint256 public freeMintStartTime;
-  uint256 public whiteListMintStartTime;
-  uint256 public whiteListMintEndTime;
-  uint256[] public publicPrice = [0, 0.15 ether, 0.25 ether, 0.3 ether];
-  uint256[] public publicSaleStartTime = [0, 0, 0, 0, 0 ,0];
-  uint256[] public mintLimit = [50, 300, 500, 800];
-  uint256[] public alreadyMint = [0, 0, 0, 0];
+  uint256[] public publicPrice = [0, 0.15 ether, 0.15 ether, 0.25 ether, 0.3 ether];
+  uint256[] public publicSaleStartTime = [0, 0, 0, 0, 0, 0, 0, 0, 0 ,0];
+  uint256[] public mintLimit = [50, 100, 200, 500, 800];
+  uint256[] public alreadyMint = [0, 0, 0, 0, 0];
   mapping(address => uint256) public allowlist;
   mapping(address => uint256) public chargeAllowlist;
   string[32] public team = [ "Qatar", "Brazil", "Belgium", "France", "Argentina", "England", "Spain", "Portugal", "Mexico", "Netherlands", "Denmark", "Germany", "Uruguay", "Switzerland", "United States", "Croatia", "Senegal", "Iran", "Japan", "Morocco", "Serbia", "Poland", "South Korea", "Tunisia", "Cameroon", "Canada", "Ecuador", "Saudi Arabia", "Ghana", "Wales", "Costa Rica", "Australia"];
@@ -28,16 +25,10 @@ contract FFCNFT is Ownable, ERC721A, ReentrancyGuard {
   constructor(
     uint256 maxBatchSize_,
     uint256 collectionSize_,
-    uint256 freeMintStartTime_, 
-    uint256 whiteListMintStartTime_,
-    uint256 whiteListMintEndTime_,
     uint256[] memory publicSaleStartTime_
-  ) ERC721A("FFCNFT", "FFCNFT", maxBatchSize_,collectionSize_) {
+  ) ERC721A("League of FFC Rights Card", "League of FFC Rights Card", maxBatchSize_,collectionSize_) {
     maxPerAddressDuringMint = maxBatchSize_;
-    freeMintStartTime = freeMintStartTime_;
-    whiteListMintStartTime = whiteListMintStartTime_;
     publicSaleStartTime = publicSaleStartTime_;
-    whiteListMintEndTime = whiteListMintEndTime_;
   }
 
   modifier callerIsUser() {
@@ -47,17 +38,17 @@ contract FFCNFT is Ownable, ERC721A, ReentrancyGuard {
 
   function getRound() public view returns(int256 round){
       round = -1;
-      if(block.timestamp >= freeMintStartTime && block.timestamp < publicSaleStartTime[0]){
+      if(block.timestamp >= publicSaleStartTime[0] && block.timestamp < publicSaleStartTime[1]){
         round = 0;
       }
-      if(block.timestamp >= publicSaleStartTime[0] && block.timestamp < publicSaleStartTime[1]){
-        round = 1;
-      }
-      if(block.timestamp >= publicSaleStartTime[2] && block.timestamp < publicSaleStartTime[3]){
+      if(block.timestamp >= publicSaleStartTime[4] && block.timestamp < publicSaleStartTime[5]){
         round = 2;
       }
-      if(block.timestamp >= publicSaleStartTime[4] && block.timestamp < publicSaleStartTime[5]){
+      if(block.timestamp >= publicSaleStartTime[6] && block.timestamp < publicSaleStartTime[7]){
         round = 3;
+      }
+      if(block.timestamp >= publicSaleStartTime[8] && block.timestamp < publicSaleStartTime[9]){
+        round = 4;
       }
   }
 
@@ -74,16 +65,9 @@ contract FFCNFT is Ownable, ERC721A, ReentrancyGuard {
     int round = getRound();
     uint256 roundUint = uint256(round);
     require(roundUint >= 0, "Has not yet started");
-    if(block.timestamp >= whiteListMintStartTime && block.timestamp < publicSaleStartTime[0]){
-      require(chargeAllowlist[msg.sender] > 0, "not eligible for allowlist mint");
-      chargeAllowlist[msg.sender] = chargeAllowlist[msg.sender].sub(quantity);
-      require(alreadyMint[1] + quantity <= mintLimit[1], "The limit of this round has been reached");
-      alreadyMint[1] =  alreadyMint[1] + quantity;
-    }else{
-        require(block.timestamp >= publicSaleStartTime[0], "Has not yet started");
-        require(alreadyMint[roundUint] + quantity <= mintLimit[roundUint], "The limit of this round has been reached");
-        alreadyMint[roundUint] =  alreadyMint[roundUint] + quantity;
-    }
+    require(block.timestamp >= publicSaleStartTime[4], "Has not yet started");
+    require(alreadyMint[roundUint] + quantity <= mintLimit[roundUint], "The limit of this round has been reached");
+    alreadyMint[roundUint] =  alreadyMint[roundUint] + quantity;
     count[index] = count[index] + quantity;
     _safeMint(msg.sender, quantity);
     refundIfOver(publicPrice[roundUint] * quantity);
@@ -122,14 +106,25 @@ contract FFCNFT is Ownable, ERC721A, ReentrancyGuard {
     }
   }
 
-  function allowlistMint() external payable callerIsUser {
-    require(block.timestamp >=  freeMintStartTime && block.timestamp < whiteListMintEndTime, "mint has not started or has ended");
+  function allowlistMint(uint256 quantity, uint256 index) external payable callerIsUser {
+    require(block.timestamp >=  publicSaleStartTime[0] && block.timestamp < publicSaleStartTime[1], "mint has not started or has ended");
     require(allowlist[msg.sender] > 0, "not eligible for allowlist mint");
-    require(totalSupply() + allowlist[msg.sender] <= collectionSize, "reached max supply");
-    _safeMint(msg.sender, allowlist[msg.sender]);
-    count[0] = count[0] +  allowlist[msg.sender];
+    require(totalSupply() + quantity <= collectionSize, "reached max supply");
+    _safeMint(msg.sender, quantity);
+    count[index] = count[index] +  quantity;
     alreadyMint[0] =  alreadyMint[0] + allowlist[msg.sender];
-    allowlist[msg.sender] = 0;
+    allowlist[msg.sender] = allowlist[msg.sender].sub(quantity);
+  }
+
+  function allowChargelistMint(uint256 quantity, uint256 index) external payable callerIsUser {
+    require(block.timestamp >=  publicSaleStartTime[2] && block.timestamp < publicSaleStartTime[3], "mint has not started or has ended");
+    require(chargeAllowlist[msg.sender] > 0, "not eligible for allowlist mint");
+    require(totalSupply() + quantity <= collectionSize, "reached max supply");
+    _safeMint(msg.sender, quantity);
+    count[index] = count[index] +  quantity;
+    alreadyMint[1] =  alreadyMint[1] + chargeAllowlist[msg.sender];
+    chargeAllowlist[msg.sender] = chargeAllowlist[msg.sender].sub(quantity);
+    refundIfOver(publicPrice[1] * quantity);
   }
 
   function _beforeTokenTransfers(
@@ -138,7 +133,7 @@ contract FFCNFT is Ownable, ERC721A, ReentrancyGuard {
     uint256 startTokenId,
     uint256 quantity
   ) internal override {
-    require(from == address(0) || block.timestamp > publicSaleStartTime[5], "transfers cannot be made until the end of all mint rounds");
+    require(from == address(0) || block.timestamp > publicSaleStartTime[9], "transfers cannot be made until the end of all mint rounds");
     super._beforeTokenTransfers( from, to, startTokenId, quantity);
   }
 
@@ -156,12 +151,6 @@ contract FFCNFT is Ownable, ERC721A, ReentrancyGuard {
   function setPublicSaleStartTime(uint256[]  memory saleStartTime) public onlyOwner{
         require(saleStartTime.length == 6, 'Error saleStartTime');
         publicSaleStartTime = saleStartTime;
-  }
-
-  function setTime( uint256 freeMintStartTime_, uint256 whiteListMintStartTime_, uint256 whiteListMintEndTime_) public onlyOwner{
-    freeMintStartTime = freeMintStartTime_;
-    whiteListMintStartTime = whiteListMintStartTime_;
-    whiteListMintEndTime = whiteListMintEndTime_;
   }
 
   function withdrawMoney() external onlyOwner nonReentrant {

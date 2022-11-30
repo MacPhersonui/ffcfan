@@ -12,21 +12,6 @@
         "type": "uint256"
       },
       {
-        "internalType": "uint256",
-        "name": "freeMintStartTime_",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "whiteListMintStartTime_",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "whiteListMintEndTime_",
-        "type": "uint256"
-      },
-      {
         "internalType": "uint256[]",
         "name": "publicSaleStartTime_",
         "type": "uint256[]"
@@ -132,6 +117,24 @@
   {
     "inputs": [
       {
+        "internalType": "uint256",
+        "name": "quantity",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "index",
+        "type": "uint256"
+      }
+    ],
+    "name": "allowChargelistMint",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "address",
         "name": "",
         "type": "address"
@@ -149,7 +152,18 @@
     "type": "function"
   },
   {
-    "inputs": [],
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "quantity",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "index",
+        "type": "uint256"
+      }
+    ],
     "name": "allowlistMint",
     "outputs": [],
     "stateMutability": "payable",
@@ -239,19 +253,6 @@
       }
     ],
     "name": "count",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "freeMintStartTime",
     "outputs": [
       {
         "internalType": "uint256",
@@ -668,29 +669,6 @@
   {
     "inputs": [
       {
-        "internalType": "uint256",
-        "name": "freeMintStartTime_",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "whiteListMintStartTime_",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "whiteListMintEndTime_",
-        "type": "uint256"
-      }
-    ],
-    "name": "setTime",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "bytes4",
         "name": "interfaceId",
         "type": "bytes4"
@@ -848,32 +826,6 @@
     "name": "transferOwnership",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "whiteListMintEndTime",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "whiteListMintStartTime",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
     "type": "function"
   },
   {

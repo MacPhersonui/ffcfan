@@ -615,16 +615,14 @@
     }
 
     .tab_wrap {
-        width: 50%;
+        width: 60%;
     }
 
     .prices {
-        padding-left: 1rem;
         font-family: Helv;
-        width: 50%;
+        width: 40%;
         padding-top: 0.4rem;
         position: relative;
-
         .mint_video {
             position: absolute;
             right: 0;
@@ -635,7 +633,7 @@
         }
 
         .btns_wrap {
-            width: 4.5rem;
+            width: 3.5rem;
             display: flex;
             flex-direction: column;
             align-items: flex-end;
@@ -656,6 +654,7 @@
 
             &.deadline {
                 // width: 3.8rem;
+                min-width: 2.6rem;
                 width: auto;
                 padding: 0 0.2rem;
             }
@@ -701,7 +700,7 @@
     .tab {
         display: flex;
         align-items: center;
-        font-size: 0.3rem;
+        font-size: 0.26rem;
         margin: 0.2rem 0;
         position: relative;
         white-space: nowrap;
@@ -744,7 +743,7 @@
     }
 
     .tab_content {
-        font-size: 0.3rem;
+        font-size: 0.25rem;
         line-height: 0.5rem;
         padding: 0 0.2rem;
         height: 4rem;
@@ -768,16 +767,30 @@
     .input_wrap{
       display: flex;
       align-items: center;
+      position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        background: url(../public/home/mint_input.png) no-repeat;
+        width: 3.8rem;
+        height: 0.6rem;
+        background-size: 100% 100%;
+        left: 0;
+        top: 0;
+        right: 2rem;
+        z-index: 1;
+      }
     }
     .mint_input {
-        background: url(../public/home/mint_input.png) no-repeat center/auto 100%;
         border: none;
-        width: 4.3rem;
+        width: 4rem;
         height: 0.6rem;
         background-color: transparent;
         font-size: 0.4rem;
         color: #091c3e;
         text-align: center;
+        position: relative;
+        z-index: 2;
     }
     .mint_btn {
         background: url(../public/home/mintbtn.png) no-repeat;
@@ -787,7 +800,7 @@
         cursor: pointer;
         margin-left: -0.3rem;
         &.disable{
-            filter: grayscale(1);
+          filter: grayscale(1);
         }
         &.fr {
             background: url(../public/home/mintbtn_fr.png);
@@ -796,25 +809,47 @@
     }
 
     .freemint {
-        display: flex;
         background: #091C3E;
         border-radius: 0.2rem;
         width: 7.3rem;
         margin-top: 0.2rem;
         padding: 0.3rem;
-        span {
+        .input_wrap{
+          display: flex;
+        }
+        input{
+          height: 0.6rem;
+          width: 3rem;
+          background: transparent;
+          outline: none;
+          border: none;
+          position: relative;
+          margin-left: 1rem;
+          z-index: 5;
+          font-size: 0.4rem;
+          color: #091c3e;
+        }
+        .mintTip {
             font-size: 0.25rem;
             vertical-align: middle;
             line-height: 0.5rem;
+            text-align: center;
         }
-
         .freemint_btn {
             background: url(../public/home/free_mint.png) no-repeat center/auto 100%;
             height: 0.6rem;
             width: 4rem;
             border: none;
             cursor: pointer;
-            vertical-align: middle;
+            margin-left: -1rem;
+            position: relative;
+            z-index: 7;
+            &.disable{
+               filter: grayscale(1);
+            }
+            &.fr{
+               background: url(../public/home/free_mint.png) no-repeat center/auto 100%;
+            }
         }
     }
 }

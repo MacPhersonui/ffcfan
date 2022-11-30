@@ -7,17 +7,26 @@ import HeaderFooter from "../layout/HeaderFooter"
 import Clipboard from 'react-clipboard.js'
 import Process from '../components/process'
 import Deadline from '../components/deadline'
-import { ToastContainer, } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer, toast } from 'react-toastify'
+ import 'react-toastify/dist/ReactToastify.css'
 import { withRouter, useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import tokenConfig from "../contract.config"
 import { confirmAlert } from "react-confirm-alert"
-import moment from 'moment'
 import { utils } from "ethers"
 import { getIdoData } from '../api/api'
 
+const toastConfig = {
+      position: 'bottom-left',
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'dark'
+    }
 
 const cx = classNames.bind(styles)
 
@@ -34,20 +43,24 @@ const Mint = () => {
   } = wallet
   const tabs = [
     {
-      name: t('phase0'),
+      name: t('phase1'),
       id: 0
     },
     {
-      name: t('phase1'),
+      name: t('phase2'),
       id: 1
     },
     {
-      name: t('phase2'),
+      name: t('phase3'),
       id: 2
     },
     {
-      name: t('phase3'),
+      name: t('phase4'),
       id: 3
+    },
+    {
+      name: t('phase5'),
+      id: 4
     }
   ]
   const web3 = new Web3(ethereum)
@@ -56,27 +69,28 @@ const Mint = () => {
   const [tabIndex, setTabIndex] = useState(0)
   const [advance, setAdvance] = useState(false)
   const [overdue, setOverdue] = useState(false)
-  const [passcard, setPasscard] = useState(1600)
-  const [circulation, setCirculation] = useState(600)
-  const [percent, setPercent] = useState(0)
-  const [unitPrice, setUnitPrice] = useState(0)
   const [expirydate, setExpirydate] = useState(1669305362000)
-  // ['1669305362', '1669505362', '1669705362', '1669905362']
-  const [publicPrice, setPublicPrice] = useState(["0", "150000000000000000", "250000000000000000", "300000000000000000"])
-  const [mintLimit, setMintLimit] = useState([50, 300, 500, 800])
-  const [alreadyMint, setAlreadyMint] = useState([0, 0,0,0])
-  const [publicSaleStartTime, setPublicSaleStartTime] = useState([0,0,0,0,0,0,0,0])
-  const [round, setRound] = useState(0)
+  const [mintedAccount, setMintedAccount] = useState(0)
+  const [publicPrice, setPublicPrice] = useState([
+    '0',
+    '150000000000000000',
+    '250000000000000000',
+    '300000000000000000',
+    '300000000000000000'
+  ])
+  const [mintLimit, setMintLimit] = useState([50, 300, 300, 500, 800,])
+  const [alreadyMint, setAlreadyMint] = useState([0,0,0,0,0])
+  const [publicSaleStartTime, setPublicSaleStartTime] = useState([
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+  ])
   const [freemintNum, setFreemintNum] = useState(0)
+  const [freemintAmount, setFreemintAmount] = useState(0)
   const [whiteListMintNum, setWhiteListMintNum] = useState(0)
-  const [mintNum, setMintNum] = useState(1)
-  const [whiteListMintStartTime, setWhiteListMintStartTime] = useState('1669405362')
+  const [mintNum, setMintNum] = useState(0)
   const [totalSupply, setTotalSupply] = useState(0)
-
 
   const { ido } = tokenConfig
   const idoContract = new web3.eth.Contract(ido.abi, ido.address)
-  console.log(idoContract)
 
   const Tab = tabs.map((item) => {
     return (
@@ -153,24 +167,11 @@ const Mint = () => {
   }
   const switchPhase = ({ id }) => {
     setTabIndex(id)
-    console.log(publicSaleStartTime)
-    let startTime, endTime;
-    if (id === 1 && whiteListMintNum * 1 > 0) {
-      startTime = whiteListMintStartTime * 1000
-      endTime = publicSaleStartTime[2] * 1000
-    } else {
-      startTime = publicSaleStartTime[id * 2] * 1000
-      endTime = publicSaleStartTime[id * 2 + 1] * 1000
+    const startTime = publicSaleStartTime[id * 2] * 1000
+    const endTime = publicSaleStartTime[id * 2 + 1] * 1000
+    if (Date.now() >= startTime && Date.now() <= endTime) {
+      setExpirydate(endTime)
     }
-     console.log(moment(startTime).format('YYYY-MM-DD'))
-     console.log(moment(endTime).format('YYYY-MM-DD'))
-     console.log(startTime)
-     console.log(endTime)
-     console.log(Date.now())
-     
-     if (Date.now() >= startTime && Date.now() <= endTime) {
-       setExpirydate(endTime)
-     }
     setAdvance(Date.now() < startTime)
     setOverdue(Date.now() > endTime)
   }
@@ -204,26 +205,16 @@ const Mint = () => {
       return false
   }
 
-  const mint = async()=>{
+  const mint = async()=> {
+    
     if (checkWallet()) return
-    if (tabIndex != round) return
-    console.log("mint", mintNum * publicPrice[round])
-    await idoContract.methods.publicSaleMint(mintNum, 0).send({
-      from: account,
-      value: mintNum * publicPrice[round]
-    })
-  }
-
-  const freemint = async()=>{
-    if (checkWallet()) return
-    if (freemintNum * 1 === 0) {
+    if (!getInornotPhase()) return
+    if (mintNum * 1 + mintedAccount * 1 > 10) {
       confirmAlert({
         customUI: ({ onClose }) => {
           return (
             <div className="custom-alert-ui">
-              <h1>
-                Not on the white list, please participate in the public sale！
-              </h1>
+              <h1>Your mint quantity exceeds the upper limit 10 ！</h1>
               <p className={styles.center}>
                 <button onClick={onClose}>Ok</button>
               </p>
@@ -233,102 +224,148 @@ const Mint = () => {
       })
       return
     }
-    await idoContract.methods.allowlistMint().send({
-      from: account
-    })
+    if (tabIndex === 1) {
+       await idoContract.methods.allowChargelistMint(mintNum, 0).send({
+         from: account,
+         value: mintNum * publicPrice[1]
+       })
+       toast.success('mint success!', toastConfig)
+    } else {
+       await idoContract.methods.publicSaleMint(mintNum, 0).send({
+         from: account,
+         value: mintNum * publicPrice[tabIndex]
+       })
+       toast.success('mint success!', toastConfig)
+    }
+   
   }
 
-  useEffect(async () => {
+  const freemint = async()=>{
+    if (checkWallet()) return
+    if (freemintNum * 1 === 0) {
+      confirmAlert({
+        customUI: ({ onClose }) => {
+          return (
+            <div className="custom-alert-ui">
+              <h1>You can not freemint because of you can Mint available is 0!</h1>
+              <p className={styles.center}>
+                <button onClick={onClose}>Ok</button>
+              </p>
+            </div>
+          )
+        }
+      })
+      return
+    }
+     if (mintNum * 1 + mintedAccount * 1 > 10) {
+       confirmAlert({
+         customUI: ({ onClose }) => {
+           return (
+             <div className="custom-alert-ui">
+               <h1>Your mint quantity exceeds the upper limit 10 ！</h1>
+               <p className={styles.center}>
+                 <button onClick={onClose}>Ok</button>
+               </p>
+             </div>
+           )
+         }
+       })
+       return
+     }
+    if (!getInornotPhase()) return
+    await idoContract.methods.allowlistMint(freemintAmount, 0).send({
+      from: account
+    })
+    toast.success('mint success!', toastConfig)
+  }
+  const getInornotPhase = ()=> {
+    const now = Date.now() / 1000
+    const start = publicSaleStartTime[tabIndex * 2]
+    const end = publicSaleStartTime[tabIndex * 2 + 1] 
+    console.log(start)
+    console.log(now)
+    console.log(end)
+    return now > start && now < end
+  }
+  const getTabindex = (times) => {
+    const now = Date.now() / 1000
+    let tabIndex = 0
+    for (let index = 0; index <= times.length; index++) {
+      if (now < times[index] * 1) {
+        if (index%2 === 0) {
+          tabIndex =  index / 2 - 1
+        } else {
+          tabIndex = (index + 1) / 2 - 1
+        }
+      }
+    }
+    // 因为白单mint 和第三阶段同时开始，需要根据白单mint数量判断具体在哪一阶段
+    if (tabIndex === 1) {
+      if (whiteListMintNum === 0) {
+        tabIndex = 2
+      }
+    }
+    return tabIndex
+  }
+
+  useEffect(() => {
     initNetWork()
-    // setPercent(91) // 设置百分比
-    // setExpirydate('2022-11-21') // 设置倒计时日期
-    // setUnitPrice(0.15) // 设置单价
-    // setPasscard(300)
-    // setCirculation(0)
-    const {
-      alreadyMint,
-      publicSaleStartTime,
-      round,
-      totalSupply,
-      whiteListMintStartTime
-    } = await getIdoData()
-    setAlreadyMint(alreadyMint)
-    setPublicSaleStartTime(publicSaleStartTime)
-    setRound(round)
-    setTotalSupply(totalSupply)
-    setWhiteListMintStartTime(whiteListMintStartTime)
-    setExpirydate(publicSaleStartTime[0] * 1000)
-    switchPhase({id: 0})
+    const initData = async()=> {
+      const data = await getIdoData()
+      const {
+        alreadyMint,
+        publicSaleStartTime,
+        totalSupply,
+      } = data
+       setAlreadyMint(alreadyMint)
+       setPublicSaleStartTime(publicSaleStartTime)
+       console.log(publicSaleStartTime)
+       setTotalSupply(totalSupply)
+       console.log(123432432432)
+       setExpirydate(publicSaleStartTime[0] * 1000)
+    }
+    initData()
     const timer = setInterval(async () => {
       if (account) {
         const freemintNum = await idoContract.methods.allowlist(account).call()
         setFreemintNum(freemintNum)
+        const mintedAccount = await idoContract.methods
+          .numberMinted(account)
+          .call()
+        setMintedAccount(mintedAccount)
         const whiteListMintNum = await idoContract.methods.chargeAllowlist(account).call()
         setWhiteListMintNum(whiteListMintNum)
-        const publicPrice1 = await idoContract.methods.publicPrice(0).call()
-        const publicPrice2 = await idoContract.methods.publicPrice(1).call()
-        const publicPrice3 = await idoContract.methods.publicPrice(2).call()
-        const publicPrice4 = await idoContract.methods.publicPrice(3).call()
-        console.log("publicPrice4" ,publicPrice4)
-        setPublicPrice([publicPrice1, publicPrice2, publicPrice3, publicPrice4])
-        console.log("publicPrice", publicPrice)
-        const mintLimit1 = await idoContract.methods.mintLimit(0).call()
-        const mintLimit2 = await idoContract.methods.mintLimit(1).call()
-        const mintLimit3 = await idoContract.methods.mintLimit(2).call()
-        const mintLimit4 = await idoContract.methods.mintLimit(2).call()
-        setMintLimit([mintLimit1, mintLimit2, mintLimit3, mintLimit4])
-        console.log("mintLimit", mintLimit)
-        const alreadyMint1 = await idoContract.methods.alreadyMint(0).call()
-        const alreadyMint2 = await idoContract.methods.alreadyMint(1).call()
-        const alreadyMint3 = await idoContract.methods.alreadyMint(2).call()
-        const alreadyMint4 = await idoContract.methods.alreadyMint(2).call()
-        setAlreadyMint([alreadyMint1, alreadyMint2, alreadyMint3, alreadyMint4])
-        console.log("alreadyMint", alreadyMint)
-        const publicSaleStartTime1 = await idoContract.methods.publicSaleStartTime(0).call()
-        const publicSaleStartTime2 = await idoContract.methods.publicSaleStartTime(1).call()
-        const publicSaleStartTime3 = await idoContract.methods.publicSaleStartTime(2).call()
-        const publicSaleStartTime4 = await idoContract.methods.publicSaleStartTime(3).call()
-        const publicSaleStartTime5 = await idoContract.methods.publicSaleStartTime(4).call()
-        const publicSaleStartTime6 = await idoContract.methods.publicSaleStartTime(5).call()
-      
-        console.log("publicSaleStartTime", publicSaleStartTime)
-        const freeMintStartTime = await idoContract.methods.freeMintStartTime().call()
-        const whiteListMintStartTime = await idoContract.methods.whiteListMintStartTime().call()
-        console.log(whiteListMintStartTime)
-        const freeMintEndTime = await idoContract.methods.whiteListMintEndTime().call()
-        setExpirydate(freeMintStartTime * 1000)
-          setPublicSaleStartTime([
-            freeMintStartTime,
-            freeMintEndTime,
-            publicSaleStartTime1,
-            publicSaleStartTime2,
-            publicSaleStartTime3,
-            publicSaleStartTime4,
-            publicSaleStartTime5,
-            publicSaleStartTime6
-          ])
-        setWhiteListMintStartTime(whiteListMintStartTime)
+        const limitPromise = [], pricePromise = [], mintedPromise = [], timePromise = []
+        for (let index = 0; index < 5; index++) {
+          limitPromise.push(idoContract.methods.publicPrice(index).call())
+          pricePromise.push(idoContract.methods.mintLimit(index).call())
+          mintedPromise.push(idoContract.methods.alreadyMint(index).call())
+        }
+        for (let index = 0; index < 10; index++) {
+          timePromise.push(
+            idoContract.methods.publicSaleStartTime(index).call()
+          )
+        }
+        const mintLimit = await Promise.all(limitPromise)
+        setMintLimit(mintLimit)
+        const publicPrice = await Promise.all(pricePromise)
+        setPublicPrice(publicPrice)
+        const alreadyMint = await Promise.all(mintedPromise)
+        setAlreadyMint(alreadyMint)
+        const publicSaleStartTime = await Promise.all(timePromise)
+        setPublicSaleStartTime(publicSaleStartTime)
+    
+        // setExpirydate(publicSaleStartTime[0] * 1000)
         const totalSupply = await idoContract.methods.totalSupply().call()
         setTotalSupply(totalSupply)
-        const tabIndex = await idoContract.methods.getRound().call() * 1
-        // setTabIndex(tabIndex)
-        setRound(tabIndex)
-        console.log("group", tabIndex)
       }
-      // clearInterval(timer)
-    }, 1500)
+      clearInterval(timer)
+    }, 1000)
+    switchPhase({ id: getTabindex(publicSaleStartTime) })
     const windowWidth = document.body.clientWidth
     if (windowWidth <= 600) {
       setSwapCount(1)
     }
-    // const handleScroll = event => {
-    //   console.log('window.scrollY', window.scrollY)
-    //   // console.log("roadmap", document.getElementById("roadmap").getBoundingClientRect().top)
-    //   console.log("events", event)
-    // }
-
-    // window.addEventListener('scroll', handleScroll)
-
     //loading
     document.getElementById("loading").classList.add("animate__animated", "animate__fadeOut", "animate__slower")
     setTimeout(() => {
@@ -337,7 +374,6 @@ const Mint = () => {
 
     return () => {
       clearInterval(timer)
-      // window.removeEventListener('scroll', handleScroll)
     }
   }, [account])
 
@@ -381,7 +417,7 @@ const Mint = () => {
             <div className={cx(styles.passcard, styles.btn)}>
               <div className={styles.label}>{t('passcard')}</div>
               <div className={styles.val}>
-                <span>{mintLimit[tabIndex]}</span>
+                <span>{Number(utils.formatEther(mintLimit[tabIndex]))}</span>
                 <span className={styles.unit}>NFTs</span>
               </div>
             </div>
@@ -407,24 +443,30 @@ const Mint = () => {
                   }}
                   className={styles.mint_input}
                   type="number"
+                  disabled={false}
                   min="1"
                   max="10"
                 />
                 <div
                   onClick={() => mint()}
-                  className={cx(styles.mint_btn, {
-                    disable: tabIndex != round
-                  }, {
-                    fr: router.locale === 'fr'
-                  })}
+                  className={cx(
+                    styles.mint_btn,
+                    {
+                      disable: !getInornotPhase()
+                    },
+                    {
+                      fr: router.locale === 'fr'
+                    }
+                  )}
                 ></div>
               </div>
               <div className={styles.unit_price}>
-                {t('unit_price')}: {Number(utils.formatEther(publicPrice[tabIndex]))} ETH / NFT
+                {t('unit_price')}:{' '}
+                {Number(utils.formatEther(publicPrice[tabIndex]))} ETH / NFT
               </div>
               {tabIndex === 1 &&
-                Date.now() >= whiteListMintStartTime * 1000 &&
-                Date.now() < publicSaleStartTime[2] * 1000 && (
+                Date.now() >= publicSaleStartTime[2] * 1000 &&
+                Date.now() < publicSaleStartTime[3] * 1000 && (
                   <>
                     <span className={styles.mintTip}>
                       Mint available: {whiteListMintNum} NFTs
@@ -435,13 +477,32 @@ const Mint = () => {
           )}
           {tabIndex == 0 && (
             <div className={styles.freemint}>
-              <span className={styles.mintTip}>
+              <div className={styles.input_wrap}>
+                <input
+                  type="number"
+                  min="0"
+                  max={freemintNum}
+                  value={freemintAmount}
+                  onChange={(e) => {
+                    setFreemintAmount(e.target.value)
+                  }}
+                />
+                <button
+                  onClick={() => freemint()}
+                  className={cx(
+                    styles.freemint_btn,
+                    {
+                      disable: !getInornotPhase()
+                    },
+                    {
+                      fr: router.locale === 'fr'
+                    }
+                  )}
+                ></button>
+              </div>
+              <div className={styles.mintTip}>
                 Mint available: {freemintNum} NFTs
-              </span>
-              <button
-                onClick={() => freemint()}
-                className = {styles.freemint_btn}
-              ></button>
+              </div>
             </div>
           )}
           <video

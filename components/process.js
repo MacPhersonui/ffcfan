@@ -14,8 +14,6 @@ for (let index = 0; index < 20 ;index++) {
   if (index === Math.floor(percent / 5) && percent % 5 !== 0) {
     const className = 'w' + Math.round(((percent % 5) / 5) * 100)
     spanClass = cx('inner', styles[className])
-    console.log(className)
-    console.log(spanClass)
   }
   item.push(
     <span key={index} className={styles.item}>
