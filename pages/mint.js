@@ -224,11 +224,20 @@ const Mint = () => {
       })
       return
     }
-    await idoContract.methods.publicSaleMint(mintNum, 0).send({
-      from: account,
-      value: mintNum * publicPrice[tabIndex]
-    })
-    toast.success('mint success!', toastConfig)
+    if (tabIndex === 1) {
+       await idoContract.methods.allowChargelistMint(mintNum, 0).send({
+         from: account,
+         value: mintNum * publicPrice[1]
+       })
+       toast.success('mint success!', toastConfig)
+    } else {
+       await idoContract.methods.publicSaleMint(mintNum, 0).send({
+         from: account,
+         value: mintNum * publicPrice[tabIndex]
+       })
+       toast.success('mint success!', toastConfig)
+    }
+   
   }
 
   const freemint = async()=>{
@@ -271,8 +280,8 @@ const Mint = () => {
   }
   const getInornotPhase = ()=> {
     const now = Date.now() / 1000
-    const start = publicSaleStartTime[tabIndex] * 1
-    const end = publicSaleStartTime[tabIndex + 1] * 1
+    const start = publicSaleStartTime[tabIndex * 2]
+    const end = publicSaleStartTime[tabIndex * 2 + 1] 
     console.log(start)
     console.log(now)
     console.log(end)
@@ -280,16 +289,23 @@ const Mint = () => {
   }
   const getTabindex = (times) => {
     const now = Date.now() / 1000
+    let tabIndex = 0
     for (let index = 0; index <= times.length; index++) {
       if (now < times[index] * 1) {
         if (index%2 === 0) {
-          return index / 2 - 1
+          tabIndex =  index / 2 - 1
         } else {
-          return (index + 1)/2-1
+          tabIndex = (index + 1) / 2 - 1
         }
       }
     }
-    return 0
+    // 因为白单mint 和第三阶段同时开始，需要根据白单mint数量判断具体在哪一阶段
+    if (tabIndex === 1) {
+      if (whiteListMintNum === 0) {
+        tabIndex = 2
+      }
+    }
+    return tabIndex
   }
 
   useEffect(() => {
@@ -303,6 +319,7 @@ const Mint = () => {
       } = data
        setAlreadyMint(alreadyMint)
        setPublicSaleStartTime(publicSaleStartTime)
+       console.log(publicSaleStartTime)
        setTotalSupply(totalSupply)
        console.log(123432432432)
        setExpirydate(publicSaleStartTime[0] * 1000)
