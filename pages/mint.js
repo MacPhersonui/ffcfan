@@ -417,7 +417,7 @@ const Mint = () => {
             <div className={cx(styles.passcard, styles.btn)}>
               <div className={styles.label}>{t('passcard')}</div>
               <div className={styles.val}>
-                <span>{Number(utils.formatEther(mintLimit[tabIndex]))}</span>
+                <span>{mintLimit[tabIndex]}</span>
                 <span className={styles.unit}>NFTs</span>
               </div>
             </div>
