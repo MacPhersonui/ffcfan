@@ -337,8 +337,8 @@ const Mint = () => {
         setWhiteListMintNum(whiteListMintNum)
         const limitPromise = [], pricePromise = [], mintedPromise = [], timePromise = []
         for (let index = 0; index < 5; index++) {
-          limitPromise.push(idoContract.methods.publicPrice(index).call())
-          pricePromise.push(idoContract.methods.mintLimit(index).call())
+          limitPromise.push(idoContract.methods.mintLimit(index).call())
+          pricePromise.push(idoContract.methods.publicPrice(index).call())
           mintedPromise.push(idoContract.methods.alreadyMint(index).call())
         }
         for (let index = 0; index < 10; index++) {
