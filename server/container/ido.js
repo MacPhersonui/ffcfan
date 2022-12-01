@@ -35,7 +35,7 @@ export async function getIDOData(req, res) {
   const alreadyMint = await Promise.all(mintedPromise)
   const publicSaleStartTime = await Promise.all(timePromise)
   const totalSupply = await idoContract.methods.totalSupply().call()
-
+  console.log(publicSaleStartTime)
     res.send({
       alreadyMint,
       publicSaleStartTime,
