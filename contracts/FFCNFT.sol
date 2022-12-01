@@ -149,7 +149,7 @@ contract FFCNFT is Ownable, ERC721A, ReentrancyGuard {
   }
 
   function setPublicSaleStartTime(uint256[]  memory saleStartTime) public onlyOwner{
-        require(saleStartTime.length == 6, 'Error saleStartTime');
+        require(saleStartTime.length == 10, 'Error saleStartTime');
         publicSaleStartTime = saleStartTime;
   }
 
