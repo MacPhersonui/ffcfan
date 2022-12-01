@@ -74,11 +74,11 @@ const Mint = () => {
   const [publicPrice, setPublicPrice] = useState([
     '0',
     '150000000000000000',
+    '150000000000000000',
     '250000000000000000',
-    '300000000000000000',
     '300000000000000000'
   ])
-  const [mintLimit, setMintLimit] = useState([50, 300, 300, 500, 800,])
+  const [mintLimit, setMintLimit] = useState([50, 100, 200, 500, 800,])
   const [alreadyMint, setAlreadyMint] = useState([0,0,0,0,0])
   const [publicSaleStartTime, setPublicSaleStartTime] = useState([
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0
@@ -351,6 +351,7 @@ const Mint = () => {
         const publicPrice = await Promise.all(pricePromise)
         setPublicPrice(publicPrice)
         const alreadyMint = await Promise.all(mintedPromise)
+        console.log("alreadyMint", alreadyMint)
         setAlreadyMint(alreadyMint)
         const publicSaleStartTime = await Promise.all(timePromise)
         setPublicSaleStartTime(publicSaleStartTime)
@@ -359,7 +360,6 @@ const Mint = () => {
         const totalSupply = await idoContract.methods.totalSupply().call()
         setTotalSupply(totalSupply)
       }
-      clearInterval(timer)
     }, 1000)
     switchPhase({ id: getTabindex(publicSaleStartTime) })
     const windowWidth = document.body.clientWidth
