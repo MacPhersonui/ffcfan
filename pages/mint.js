@@ -118,16 +118,69 @@ const Mint = () => {
           <li>{t('phase1_con4')}</li>
           <li>{t('phase1_con5')}</li>
           <li>{t('phase1_con6')}</li>
+          <li>{t('phase1_con7')}</li>
         </ul>
       )
     }
     if (tabIndex === 1) {
       return (
         <ul>
-          <li>{t('phase1_con3')}</li>
-          <li>{t('phase1_con4')}</li>
-          <li>{t('phase1_con5')}</li>
-          <li>{t('phase1_con6')}</li>
+          <li>{t('phase2_con1')}</li>
+          <li>{t('phase2_con2')}</li>
+          <li>{t('phase2_con3')}</li>
+          <li>{t('phase2_con4')}</li>
+          <li>{t('phase2_con5')}</li>
+          <li>{t('phase2_con6')}</li>
+          <li>{t('phase2_con7')}</li>
+        </ul>
+      )
+    }
+    if (tabIndex === 2) {
+      return (
+        <ul>
+          <li>{t('phase2_con1')}</li>
+          <li>{t('phase2_con2')}</li>
+          <li>{t('phase2_con3')}</li>
+          <li>{t('phase2_con4')}</li>
+          <li>{t('phase2_con5')}</li>
+          <li>{t('phase2_con6')}</li>
+          <li>{t('phase2_con7')}</li>
+        </ul>
+      )
+    }
+    if (tabIndex === 2) {
+      return (
+        <ul>
+          <li>{t('phase3_con1')}</li>
+          <li>{t('phase3_con2')}</li>
+          <li>{t('phase3_con3')}</li>
+          <li>{t('phase3_con4')}</li>
+          <li>{t('phase3_con5')}</li>
+          <li>{t('phase3_con6')}</li>
+        </ul>
+      )
+    }
+     if (tabIndex === 3) {
+      return (
+        <ul>
+          <li>{t('phase4_con1')}</li>
+          <li>{t('phase4_con2')}</li>
+          <li>{t('phase4_con3')}</li>
+          <li>{t('phase4_con4')}</li>
+          <li>{t('phase4_con5')}</li>
+          <li>{t('phase4_con6')}</li>
+        </ul>
+      )
+    }
+    if (tabIndex === 4) {
+      return (
+        <ul>
+          <li>{t('phase5_con1')}</li>
+          <li>{t('phase5_con2')}</li>
+          <li>{t('phase5_con3')}</li>
+          <li>{t('phase5_con4')}</li>
+          <li>{t('phase5_con5')}</li>
+          <li>{t('phase5_con6')}</li>
         </ul>
       )
     }
@@ -408,7 +461,7 @@ const Mint = () => {
         <div className={styles.prices}>
           <div className={styles.btns_wrap}>
             <div className={cx(styles.passcard, styles.btn)}>
-              <div className={styles.label}>{t('passcard')}</div>
+              <div className={styles.label}>{t('total_supply')}</div>
               <div className={styles.val}>
                 <span>1650</span>
                 <span className={styles.unit}>NFTs</span>
