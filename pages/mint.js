@@ -83,8 +83,8 @@ const Mint = () => {
   const [publicSaleStartTime, setPublicSaleStartTime] = useState([
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0
   ])
-  const [freemintNum, setFreemintNum] = useState(1)
-  const [freemintAmount, setFreemintAmount] = useState(0)
+  const [freemintNum, setFreemintNum] = useState(0)
+  const [freemintAmount, setFreemintAmount] = useState(1)
   const [whiteListMintNum, setWhiteListMintNum] = useState(0)
   const [mintNum, setMintNum] = useState(1)
   const [totalSupply, setTotalSupply] = useState(0)
