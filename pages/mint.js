@@ -519,7 +519,9 @@ const Mint = () => {
               </div>
               {tabIndex === 1 &&
                 Date.now() >= publicSaleStartTime[2] * 1000 &&
-                Date.now() < publicSaleStartTime[3] * 1000 && (
+                Date.now() < publicSaleStartTime[3] * 1000 && 
+                whiteListMintNum > 0
+                (
                   <>
                     <span className={styles.mintTip}>
                       Mint available: {whiteListMintNum} NFTs
@@ -553,9 +555,10 @@ const Mint = () => {
                   )}
                 ></button>
               </div>
+              {freemintNum > 0 &&
               <div className={styles.mintTip}>
                 Mint available: {freemintNum} NFTs
-              </div>
+              </div>}
             </div>
           )}
           <video
