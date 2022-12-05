@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -7,7 +6,6 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import '@openzeppelin/contracts/utils/math/SafeMath.sol';
 import "./ERC721A.sol";
-import "hardhat/console.sol";
 
 contract FFCNFT is Ownable, ERC721A, ReentrancyGuard {
   using SafeMath for uint256;
@@ -15,7 +13,7 @@ contract FFCNFT is Ownable, ERC721A, ReentrancyGuard {
   uint256 public immutable maxPerAddressDuringMint;
   uint256[] public publicPrice = [0, 0.15 ether, 0.15 ether, 0.25 ether, 0.3 ether];
   uint256[] public publicSaleStartTime = [0, 0, 0, 0, 0, 0, 0, 0, 0 ,0];
-  uint256[] public mintLimit = [50, 100, 200, 500, 800];
+  uint256[] public mintLimit = [50, 150, 150, 500, 800];
   uint256[] public alreadyMint = [0, 0, 0, 0, 0];
   mapping(address => uint256) public allowlist;
   mapping(address => uint256) public chargeAllowlist;
@@ -110,6 +108,7 @@ contract FFCNFT is Ownable, ERC721A, ReentrancyGuard {
     require(block.timestamp >=  publicSaleStartTime[0] && block.timestamp < publicSaleStartTime[1], "mint has not started or has ended");
     require(allowlist[msg.sender] > 0, "not eligible for allowlist mint");
     require(totalSupply() + quantity <= collectionSize, "reached max supply");
+    require(alreadyMint[0] + quantity <= mintLimit[0], "The limit of this round has been reached");
     _safeMint(msg.sender, quantity);
     count[index] = count[index] +  quantity;
     alreadyMint[0] =  alreadyMint[0] + allowlist[msg.sender];
@@ -120,6 +119,7 @@ contract FFCNFT is Ownable, ERC721A, ReentrancyGuard {
     require(block.timestamp >=  publicSaleStartTime[2] && block.timestamp < publicSaleStartTime[3], "mint has not started or has ended");
     require(chargeAllowlist[msg.sender] > 0, "not eligible for allowlist mint");
     require(totalSupply() + quantity <= collectionSize, "reached max supply");
+    require(alreadyMint[1] + quantity <= mintLimit[1], "The limit of this round has been reached");
     _safeMint(msg.sender, quantity);
     count[index] = count[index] +  quantity;
     alreadyMint[1] =  alreadyMint[1] + chargeAllowlist[msg.sender];
@@ -137,7 +137,6 @@ contract FFCNFT is Ownable, ERC721A, ReentrancyGuard {
     super._beforeTokenTransfers( from, to, startTokenId, quantity);
   }
 
-  //metadata URI
   string private _baseTokenURI;
 
   function _baseURI() internal view virtual override returns (string memory) {
@@ -151,6 +150,11 @@ contract FFCNFT is Ownable, ERC721A, ReentrancyGuard {
   function setPublicSaleStartTime(uint256[]  memory saleStartTime) public onlyOwner{
         require(saleStartTime.length == 10, 'Error saleStartTime');
         publicSaleStartTime = saleStartTime;
+  }
+
+  function setMintLimit(uint256[]  memory mintLimitArr) public onlyOwner{
+        require(mintLimitArr.length == 5, 'Error saleStartTime');
+        mintLimit = mintLimitArr;
   }
 
   function withdrawMoney() external onlyOwner nonReentrant {

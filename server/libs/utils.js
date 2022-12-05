@@ -1,6 +1,6 @@
 import Web3 from 'web3'
 
-const RPC_URL = "https://bsc-testnet.public.blastapi.io"
+const RPC_URL = "https://eth-mainnet.g.alchemy.com/v2/LbGQ_gbJWj0-yJwk7p514xKZkfdXiEcI"
 
 export function initWeb3() {
     const web3 = new Web3(new Web3.providers.HttpProvider(RPC_URL))

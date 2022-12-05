@@ -16,7 +16,7 @@ async function main() {
     this.deployer = (await ethers.getSigners())[0].address
     console.log("deployer address", this.deployer)
 
-    this.FFCNFT = await FFCNFT.new(10, 1650, [1669893144, 1679893144, 1689893144, 1699893144, 1709893144, 1719893144, 1729893144, 1739893144, 1749893144, 1759893144])
+    this.FFCNFT = await FFCNFT.new(10, 1650, [1670310000, 1670583600, 1670310000, 1670396400, 1670310000, 1670396400, 1670403600, 1670490000, 1670497200, 1670583600])
     console.log("FFCNFT", this.FFCNFT.address)
     // await this.FFCNFT.seedAllowlist(["0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"],["10"])
     // await this.FFCNFT.allowlistMint(1,0)
