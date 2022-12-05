@@ -138,19 +138,6 @@ const Mint = () => {
     if (tabIndex === 2) {
       return (
         <ul>
-          <li>{t('phase2_con1')}</li>
-          <li>{t('phase2_con2')}</li>
-          <li>{t('phase2_con3')}</li>
-          <li>{t('phase2_con4')}</li>
-          <li>{t('phase2_con5')}</li>
-          <li>{t('phase2_con6')}</li>
-          <li>{t('phase2_con7')}</li>
-        </ul>
-      )
-    }
-    if (tabIndex === 2) {
-      return (
-        <ul>
           <li>{t('phase3_con1')}</li>
           <li>{t('phase3_con2')}</li>
           <li>{t('phase3_con3')}</li>
@@ -160,7 +147,7 @@ const Mint = () => {
         </ul>
       )
     }
-     if (tabIndex === 3) {
+    if (tabIndex === 3) {
       return (
         <ul>
           <li>{t('phase4_con1')}</li>
@@ -172,9 +159,9 @@ const Mint = () => {
         </ul>
       )
     }
-    if (tabIndex === 4) {
+     if (tabIndex === 4) {
       return (
-        <ul>
+       <ul>
           <li>{t('phase5_con1')}</li>
           <li>{t('phase5_con2')}</li>
           <li>{t('phase5_con3')}</li>
