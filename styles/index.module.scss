@@ -1010,6 +1010,15 @@
                     overflow: hidden;
                 }
             }
+            .ieo{
+              top: auto;
+              bottom: 5rem;
+              left: 50%;
+              right: auto;
+              font-size: 1rem;
+              padding: 0.4rem 1rem;
+              margin-left: -3rem;
+            }
         }
 
         .what_is_ffc {
@@ -1490,7 +1499,8 @@
         .tab {
             .tab_item {
                 text-align: center;
-                font-size: 0.8rem;
+                font-size: 0.5rem;
+                height: 1.3rem;
                 &::after {
                     height: 2px;
                 }
@@ -1555,6 +1565,11 @@
                 width: 90%;
                 margin: 0 auto;
                 margin-top: 9rem;
+                .input_wrap{
+                  &::after{
+                    display: none;
+                  }
+                }
                 .unit_price {
                   margin-top: 0.5rem;
                   font-size: 0.6rem;
@@ -1598,13 +1613,25 @@
                   line-height: 1.2rem;
                   margin-right: 0.5rem;
               }
-
+              .input_wrap{
+                input{
+                  height: 1.2rem;
+                  width: 9.8rem;
+                  text-align: center;
+                  margin: 0;
+                }
+                &::after{
+                  width: 9.8rem;
+                  height: 1.2rem;
+                }
+              }
               .freemint_btn {
                   background: url(../public/home/free_mint.png) no-repeat center/auto 100%;
                   height: 1.2rem;
                   width: 5rem;
                   border: none;
                   cursor: pointer;
+                  margin-left: -0.7rem;
               }
           }
         }

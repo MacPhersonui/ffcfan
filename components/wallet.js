@@ -89,7 +89,7 @@ const Wallet = ({t}) => {
                 ? '...'
                 : `${parseFloat(
                     ethersUtils.formatEther(wallet.balance)
-                  ).toFixed(2)} BNB`}
+                  ).toFixed(2)} ETH`}
               {' '}
             </span>
           </div>
