@@ -68,7 +68,7 @@
             width: 9rem;
 
             .text {
-                height: 4rem;
+                height: 3.5rem;
 
                 .solgen_logo {
                     background: url(../public/home/solgen_logo.png) no-repeat center/100% auto;
@@ -161,6 +161,20 @@
                 border-radius: 3px;
                 overflow: hidden;
             }
+        }
+        .ieo{
+            background: #ccfd0a;
+            font-family: 'Fifa';
+            position: absolute;
+            left: 50%;
+            margin-left: -4rem;
+            top: 9.5rem;
+            border: none;
+            font-size: 0.35rem;
+            padding: 0.2rem 0.5rem;
+            cursor: pointer;
+            border-radius: 0.15rem;
+            box-shadow: 0 0 17px #ff2a40;
         }
     }
 
