@@ -334,7 +334,7 @@ const Home = () => {
                                             </Swiper> */}
                       </div>
                     </div>
-                    <Link href="/mint"><button id="ido" className={styles.ieo}>Go to IEO</button></Link>
+                    <Link href="/mint"><button id="ido" className={styles.ieo}>Go to INO</button></Link>
 
                   </div>
                   <div className={styles.what_is_ffc + ' section content-item'}>
