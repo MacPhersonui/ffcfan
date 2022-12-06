@@ -69,7 +69,7 @@ const Mint = () => {
   const [tabIndex, setTabIndex] = useState(0)
   const [advance, setAdvance] = useState(false)
   const [overdue, setOverdue] = useState(false)
-  const [expirydate, setExpirydate] = useState(1669305362000)
+  const [expirydate, setExpirydate] = useState(1670583600000)
   const [mintedAccount, setMintedAccount] = useState(0)
   const [publicPrice, setPublicPrice] = useState([
     '0',
@@ -78,11 +78,9 @@ const Mint = () => {
     '250000000000000000',
     '300000000000000000'
   ])
-  const [mintLimit, setMintLimit] = useState([50, 100, 200, 500, 800,])
+  const [mintLimit, setMintLimit] = useState([50, 150, 150, 500, 800,])
   const [alreadyMint, setAlreadyMint] = useState([0,0,0,0,0])
-  const [publicSaleStartTime, setPublicSaleStartTime] = useState([
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-  ])
+  const [publicSaleStartTime, setPublicSaleStartTime] = useState([1670310000, 1670583600, 1670310000, 1670396400, 1670310000, 1670396400, 1670403600, 1670490000, 1670497200, 1670583600])
   const [freemintNum, setFreemintNum] = useState(0)
   const [freemintAmount, setFreemintAmount] = useState(1)
   const [whiteListMintNum, setWhiteListMintNum] = useState(0)
@@ -181,30 +179,19 @@ const Mint = () => {
       }
       return <Deadline timestamp={expirydate} />
   }
+
   const initNetWork = async () => {
     let ethereum = window.ethereum
-    const data = [{
-      chainId: "0x61",
-      // chainId: "0x38",
-      chainName: "Binance Smart Chain Test Mainnet",
-      nativeCurrency: {
-        name: "TBNB",
-        symbol: "TBNB",
-        decimals: 18,
-      },
-      rpcUrls: ["https://bsc-testnet.public.blastapi.io"],
-      blockExplorerUrls: ["https://bscscan.com/"],
-    },]
-
-    /* eslint-disable */
-    const tx = await ethereum.request({
-      method: "wallet_addEthereumChain",
-      params: data
-    }).catch()
-    if (tx) {
-      console.log(tx)
+    if (ethereum) {
+      await ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{
+          chainId: "0x1"
+        }],
+      });
     }
   }
+
   const switchPhase = ({ id }) => {
     setTabIndex(id)
     const startTime = publicSaleStartTime[id * 2] * 1000
@@ -401,6 +388,7 @@ const Mint = () => {
         setTotalSupply(totalSupply)
       }
     }, 1000)
+    console.log("getTabindex", getTabindex(publicSaleStartTime))
     switchPhase({ id: getTabindex(publicSaleStartTime) })
     const windowWidth = document.body.clientWidth
     if (windowWidth <= 600) {

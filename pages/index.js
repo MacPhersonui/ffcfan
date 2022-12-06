@@ -42,6 +42,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import Link from 'next/link'
 
 // import required modules
 import {
@@ -129,6 +130,7 @@ const Home = () => {
             document.getElementById("solgen_title").classList.add("animate__animated", "animate__fadeInLeft", "animate__fast", "animate__delay-3s")
             document.getElementById("solgen_subtitle").classList.add("animate__animated", "animate__fadeInLeft", "animate__fast", "animate__delay-3s")
             document.getElementById("solgen_team").classList.add("animate__animated", "animate__fadeInLeft", "animate__fast", "animate__delay-3s")
+            document.getElementById("ido").classList.add("animate__animated", "animate__fadeInLeft", "animate__fast", "animate__delay-3s")
             document.getElementById("solgen_video").classList.add("animate__animated", "animate__fadeInRight", "animate__fast", "animate__delay-2s")
         }
     }
@@ -332,6 +334,8 @@ const Home = () => {
                                             </Swiper> */}
                       </div>
                     </div>
+                    <Link href="/mint"><button id="ido" className={styles.ieo}>Go to IEO</button></Link>
+
                   </div>
                   <div className={styles.what_is_ffc + ' section content-item'}>
                     <i className={styles.flag}>

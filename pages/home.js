@@ -192,6 +192,7 @@ const Home = ({
                     <div className={styles.solgen_logo}></div>
                     <div className={styles.solgen_token1}></div>
                     <div className={styles.solgen_token2}></div>
+                    <button>Go to IEO</button>
                 </section>
                 <section id="ffc" className={styles.what_is_ffc}>
                     <div id="ffc_title" className={styles.title}>

@@ -1,6 +1,6 @@
 module.exports = {
     ido: {
-        address: "0x66cD304486586a48b00D1F84922ea7ac73b3bdc3",
+        address: "0xe3f2af83216d99d65d055165263dc1bbeFB80E77",
         abi: require("./abi/FFCNFT.json"),
     }
 }

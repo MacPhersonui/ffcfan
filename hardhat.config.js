@@ -125,15 +125,15 @@ module.exports = {
                     },
                 },
             },
-            {
-                version: "0.8.0",
-                settings: {
-                    optimizer: {
-                        enabled: true,
-                        runs: 200,
-                    },
-                },
-            },
+            // {
+            //     version: "0.8.0",
+            //     settings: {
+            //         optimizer: {
+            //             enabled: true,
+            //             runs: 200,
+            //         },
+            //     },
+            // },
             {
                 version: "0.8.1",
                 settings: {
@@ -142,33 +142,34 @@ module.exports = {
                         runs: 200,
                     },
                 },
-            }, {
-                version: "0.8.4",
-                settings: {
-                    optimizer: {
-                        enabled: true,
-                        runs: 200,
-                    },
-                },
-            },
-            {
-                version: "0.8.6",
-                settings: {
-                    optimizer: {
-                        enabled: true,
-                        runs: 200,
-                    },
-                },
-            },
-            {
-                version: "0.8.11",
-                settings: {
-                    optimizer: {
-                        enabled: true,
-                        runs: 200,
-                    },
-                },
-            },
+            }, 
+            // {
+            //     version: "0.8.4",
+            //     settings: {
+            //         optimizer: {
+            //             enabled: true,
+            //             runs: 200,
+            //         },
+            //     },
+            // },
+            // {
+            //     version: "0.8.6",
+            //     settings: {
+            //         optimizer: {
+            //             enabled: true,
+            //             runs: 200,
+            //         },
+            //     },
+            // },
+            // {
+            //     version: "0.8.11",
+            //     settings: {
+            //         optimizer: {
+            //             enabled: true,
+            //             runs: 200,
+            //         },
+            //     },
+            // },
         ],
     },
     paths: {
